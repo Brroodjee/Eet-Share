@@ -7,4 +7,8 @@ public class Lid extends User {
         super(naam, email, wachtwoord, userID);
         this.lidID = lidID;
     }
+
+    public int getLidID() {
+        return lidID;
+    }
 }

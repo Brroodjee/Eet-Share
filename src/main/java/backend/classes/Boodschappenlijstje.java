@@ -9,4 +9,16 @@ public class Boodschappenlijstje {
     public Boodschappenlijstje(Huishouden huishouden) {
         this.huishouden = huishouden;
     }
+
+    public Huishouden getHuishouden() {
+        return huishouden;
+    }
+
+    public ArrayList<Product> getProducten() {
+        return producten;
+    }
+
+    public void setProducten(ArrayList<Product> producten) {
+        this.producten = producten;
+    }
 }

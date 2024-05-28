@@ -9,4 +9,16 @@ public class Favorietenlijstje {
     public Favorietenlijstje(int userID) {
         this.userID = userID;
     }
+
+    public ArrayList<Product> getProducten() {
+        return producten;
+    }
+
+    public void setProducten(ArrayList<Product> producten) {
+        this.producten = producten;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
 }

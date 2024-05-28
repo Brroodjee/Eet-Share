@@ -7,4 +7,8 @@ public class Gebruiker extends User {
         super(naam, email, wachtwoord, userID);
         this.gebruikerID = gebruikerID;
     }
+
+    public int getGebruikerID() {
+        return gebruikerID;
+    }
 }

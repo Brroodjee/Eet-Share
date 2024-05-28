@@ -7,4 +7,12 @@ public class Hoofd extends User {
         super(naam, email, wachtwoord, userID);
         this.hoofdID = hoofdID;
     }
+
+    public int getHoofdID() {
+        return hoofdID;
+    }
+
+    public void setHoofdID(int hoofdID) {
+        this.hoofdID = hoofdID;
+    }
 }

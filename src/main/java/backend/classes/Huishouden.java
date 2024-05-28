@@ -12,4 +12,20 @@ public class Huishouden {
         this.huishoudenNaam = huishoudenNaam;
         this.hoofd = hoofd;
     }
+
+    public String getHuishoudenNaam() {
+        return huishoudenNaam;
+    }
+
+    public void setHuishoudenNaam(String huishouden) {
+        this.huishoudenNaam = huishouden;
+    }
+
+    public Hoofd getHoofd() {
+        return hoofd;
+    }
+
+    public void setHoofd(Hoofd hoofd) {
+        this.hoofd = hoofd;
+    }
 }

@@ -28,4 +28,52 @@ public class Product {
         this.isSnoep = isSnoep;
         this.isOverige = isOverige;
     }
+
+    public int getProductID() {
+        return productID;
+    }
+
+    public String getBeschrijving() {
+        return beschrijving;
+    }
+
+    public String getProductNaam() {
+        return productNaam;
+    }
+
+    public Winkel getWinkel() {
+        return winkel;
+    }
+
+    public Boolean getIsVleeswaren() {
+        return isVleeswaren;
+    }
+
+    public Boolean getIsDrank() {
+        return isDrank;
+    }
+
+    public Boolean getIsZuivel() {
+        return isZuivel;
+    }
+
+    public Boolean getIsGroente() {
+        return isGroente;
+    }
+
+    public Boolean getIsFruit() {
+        return isFruit;
+    }
+
+    public Boolean getIsKoek() {
+        return isKoek;
+    }
+
+    public Boolean getIsSnoep() {
+        return isSnoep;
+    }
+
+    public Boolean getIsOverige() {
+        return isOverige;
+    }
 }

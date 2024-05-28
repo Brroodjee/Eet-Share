@@ -11,4 +11,12 @@ public class Winkel {
         this.winkelNaam = winkelNaam;
         this.winkelID = winkelID;
     }
+
+    public String getWinkelNaam() {
+        return winkelNaam;
+    }
+
+    public int getWinkelID() {
+        return winkelID;
+    }
 }

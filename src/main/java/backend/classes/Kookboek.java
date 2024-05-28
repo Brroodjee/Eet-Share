@@ -11,4 +11,20 @@ public class Kookboek {
         this.kookboekID = kookboekID;
         this.huishouden = huishouden;
     }
+
+    public int getKookboekID() {
+        return kookboekID;
+    }
+
+    public Huishouden getHuishouden() {
+        return huishouden;
+    }
+
+    public ArrayList<Recept> getRecepten() {
+        return recepten;
+    }
+
+    public void setRecepten(ArrayList<Recept> recepten) {
+        this.recepten = recepten;
+    }
 }
