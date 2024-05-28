@@ -1,10 +1,10 @@
 body {
-    --color-primary: #009579;  /* https://www.w3schools.com/css/css3_variables.asp  */
-    --color-primary-dark: #007f67;
+    --color-primary: #A6A0D4;  /* https://www.w3schools.com/css/css3_variables.asp  */
+    --color-primary-dark: #8880cb;
     --color-secondary: #252c6a;
     --color-error: #cc3333;
     --color-success: #4bb544;
-    --border-radius: 4px;  /* https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius  */
+    --border-radius: 6px;  /* https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius  */
 
     margin: 0;
     height: 100vh;
