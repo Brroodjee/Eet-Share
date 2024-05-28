@@ -154,3 +154,40 @@ body {
 .body__link:hover {
     text-decoration: underline;
 }
+
+#productInHuis__header {
+    width: 100%;
+    height: calc(15%);
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+}
+
+#productInHuis__header h1 {
+    text-align: center;
+}
+
+.menu {
+    width: calc(15%);
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#goneShadow {
+    top: 0;
+    left: 0;
+    background-color: white;
+    position: fixed;
+    width: calc(16%);
+    height: calc(15%);
+    z-index: 10;
+}
+
