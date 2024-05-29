@@ -4,6 +4,12 @@ body {
     --color-secondary: #252c6a;
     --color-error: #cc3333;
     --color-success: #4bb544;
+    --color-rainbow-pink: #E197BB;
+    --color-rainbow-orange: #F49C8A;
+    --color-rainbow-yellow: #F1C09C;
+    --color-rainbow-green: #B8C9B3;
+    --color-rainbow-moss: #85BFA9;
+    --color-rainbow-blue: #92D0DB;
     --border-radius: 6px;  /* https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius  */
 
     margin: 0;
@@ -222,4 +228,30 @@ body {
     cursor: pointer;
     background-color: var(--color-primary-dark);
     color: white;
+}
+
+#productInHuis__container {
+    background-color: black;
+    width: 30%;
+    position: fixed;
+    left: 25%;
+}
+
+.productInHuis__template-div {
+    background-color: var(--color-rainbow-pink);
+    width: 100%;
+    text-align: center;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+}
+
+.grid-container { /* https://www.w3schools.com/css/tryit.asp?filename=trycss_grid */
+    width: calc(70%);
+    left: calc(25%);
+    top: calc(20%);
+    position: fixed;
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    gap: 5%;
 }
