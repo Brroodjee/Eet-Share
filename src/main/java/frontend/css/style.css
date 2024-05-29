@@ -169,7 +169,7 @@ body {
 }
 
 .menu {
-    width: calc(15%);
+    width: calc(20%);
     height: 100%;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -178,7 +178,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: calc(20%);
+}
+
+.menu__link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu__link:hover {
+    text-decoration: underline;
 }
 
 #goneShadow {
@@ -186,7 +197,7 @@ body {
     left: 0;
     background-color: white;
     position: fixed;
-    width: calc(16%);
+    width: calc(21%);
     height: calc(15%);
     z-index: 10;
 }
