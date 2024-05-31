@@ -1,6 +1,10 @@
 package backend.classes;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Winkel {
     private String winkelNaam;
@@ -18,5 +22,12 @@ public class Winkel {
 
     public int getWinkelID() {
         return winkelID;
+    }
+
+    public JsonObject toJson() {
+        JsonObjectBuilder winkelBuilder = Json.createObjectBuilder();
+        winkelBuilder.add("winkelNaam", this.winkelNaam);
+        winkelBuilder.add("winkelID", this.winkelID);
+        return winkelBuilder.build();
     }
 }

@@ -1,5 +1,8 @@
 package backend.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Product {
     private int productID;
     private String beschrijving;
@@ -14,12 +17,19 @@ public class Product {
     private Boolean isSnoep;
     private Boolean isOverige;
 
+    private static List<Product> producten = new ArrayList<>();
+
+    static {
+        Winkel ahWinkel = new Winkel("Albert Heijn", 1);
+        producten.add(new Product(1, "Bananen", "AH Bananen tros", ahWinkel, false, false, false, false, true, false, false, false));
+    }
+
     public Product(int productID, String beschrijving, String productNaam, Winkel winkel, Boolean isVleesware, Boolean isDrank, Boolean isZuivel, Boolean isGroente, Boolean isFruit, Boolean isKoek, Boolean isSnoep, Boolean isOverige) {
         this.productID = productID;
         this.beschrijving = beschrijving;
         this.productNaam = productNaam;
         this.winkel = winkel;
-        this.isVleeswaren = isVleeswaren;
+        this.isVleeswaren = isVleesware;
         this.isDrank = isDrank;
         this.isZuivel = isZuivel;
         this.isGroente = isGroente;
@@ -75,5 +85,9 @@ public class Product {
 
     public Boolean getIsOverige() {
         return isOverige;
+    }
+
+    public static List<Product> getProducten() {
+        return producten;
     }
 }
