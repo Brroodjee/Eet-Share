@@ -8,49 +8,41 @@
     <body>
         <header id="productInHuis__header">
             <h1>Producten in huis</h1>
-            <div id="plaatsToevoegen">
-                <p>Plaats toevoegen</p>
-                <button id="ProductInHuis__button--plaatsToevoegen">+</button>
-            </div>
         </header>
         <div class="menu">
             <h1>Menu</h1>
             <a href="homepage.html" class="menu__link">Homepage</a>
             <a href="#" class="menu__link">Boodschappenlijstje</a>
         </div>
-
-        <div id="productInHuis__container">
-            <div class="grid-container">
-                <button id="addRowButton">Add a row</button>
-                <!--alles wat binnen de template valt komt hierin te staan-->
-            </div>
-        </div>
-        <template id="productInHuis__template">
-            <div class="productInHuis__template-div">
-                <h1>Koelkast</h1>
-                <select class="user-dropdown" name="users">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                    <option>Selecteer gebruiker</option>
-                </select>
-
-
-                <table id="theTable">
-                    <tr>
-                        <th>qty</th>
-                        <th>product</th>
-                        <th>remove</th>
-                    </tr>
-                </table>
-            </div>
-        </template>
+                <div class="productInHuis__template-div">
+                    <h1>Producten</h1>
+                    <button id="addRowButton">Add a product</button>
+                    <table id="theTable">
+                        <tr>
+                            <th>qty</th>
+                            <th>product</th>
+                            <th>remove</th>
+                        </tr>
+                        <tr>
+                            <td><input type="number" class="productInHuis__input-number" placeholder="1"/></td>
+                            <td>
+                                <select class="user-dropdown" name="users">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                                    <option>Selecteer gebruiker</option>
+                                </select>
+                            </td>
+                            <td><button type="button" name="remove" class="removeButton">x</button></td>
+                        </tr>
+                    </table>
+                </div>
         <template id="productInHuis__Table-template">
             <tr>
-                <td><input type="number"/></td>
+                <td><input type="number" class="productInHuis__input-number" placeholder="1"/></td>
                 <td>
                     <select class="user-dropdown" name="users">  <!--https://www.w3schools.com/tags/tag_select.asp-->
                         <option>Selecteer gebruiker</option>
                     </select>
                 </td>
-                <td><button type="button" name="remove">Remove</button></td>
+                <td><button type="button" name="remove" class="removeButton">x</button></td>
             </tr>
         </template>
 
