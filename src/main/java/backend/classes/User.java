@@ -1,6 +1,7 @@
 package backend.classes;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class User {
@@ -56,5 +57,18 @@ public class User {
 
     public boolean validatePassword(String password) {
         return this.wachtwoord.equals(password);
+    }
+
+    public static int getNewUserID() {
+        List<User> newUsers = new ArrayList<>();
+
+        if (users.isEmpty()) {
+            return 1;
+        } else {
+            users.sort(Comparator.comparingInt(User::getUserID).reversed());
+
+            int highestUserID = users.get(0).getUserID();
+            return highestUserID + 1;
+        }
     }
 }

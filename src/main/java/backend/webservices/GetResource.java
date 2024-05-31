@@ -10,19 +10,17 @@ import javax.json.JsonObjectBuilder;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.io.InputStream;
+import java.io.StringReader;
 import java.util.List;
 
 @Path("/login")
 public class GetResource extends Application {
-
+    List<User> users = User.getUsers();
 
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getUsers() {
-        List<User> users = User.getUsers();
         JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
         for (User user : users) {
             JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
@@ -34,5 +32,27 @@ public class GetResource extends Application {
         }
         JsonArray jsonArray = jsonArrayBuilder.build();
         return jsonArray.toString();
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public String addUsers(String jsonBody) {
+        JsonObjectBuilder responseObject = Json.createObjectBuilder();
+
+        try {
+            JsonObject jsonObject = Json.createReader(new StringReader(jsonBody)).readObject();
+            String naam = jsonObject.getString("naam");
+            String email = jsonObject.getString("email");
+            String wachtwoord = jsonObject.getString("wachtwoord");
+            int userID = User.getNewUserID();
+
+            User user = new User(naam, email, wachtwoord, userID);
+            users.add(user);
+            responseObject.add("user toegevoegd met userID:", userID);
+        } catch (Exception e) {
+            responseObject.add("error", e.getMessage());
+        }
+
+        return responseObject.build().toString();
     }
 }

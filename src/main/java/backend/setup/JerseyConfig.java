@@ -1,4 +1,4 @@
-package backend;
+package backend.setup;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import javax.ws.rs.ApplicationPath;

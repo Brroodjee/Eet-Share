@@ -55,11 +55,8 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <url>http://localhost:4711/manager/text</url>
+                    <url>http://localhost:4711</url>
                     <server>TomcatServer</server>
-                    <path>/IPASS</path>
-                    <username>admin</username>
-                    <password>admin</password>
                 </configuration>
             </plugin>
             <plugin>
