@@ -1,6 +1,6 @@
 function populateDropdown() {
     console.log("populateDropdown() function called");
-    fetch('http://localhost:4711/eet-share/login', {
+    fetch('http://localhost:4711/eet-share/producten', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -8,12 +8,12 @@ function populateDropdown() {
     })
         .then(response => response.json())
         .then(data => {
-            const dropdowns = document.querySelectorAll('.user-dropdown');
+            const dropdowns = document.querySelectorAll('.product-dropdown');
             dropdowns.forEach(dropdown => {
-                if (dropdown.children.length <= 1) {   // kijkt of de producten (in dit geval users nog) al in de dropdown staan, zo niet voegt hij ze toe
-                    data.forEach(user => {
+                if (dropdown.children.length <= 1) {   // kijkt of de producten al in de dropdown staan, zo niet voegt hij ze toe
+                    data.forEach(product => {
                         const option = document.createElement('option');
-                        option.text = user.naam;
+                        option.text = product.productNaam;
                         dropdown.add(option);
                     });
                 }
