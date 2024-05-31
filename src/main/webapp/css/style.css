@@ -1,4 +1,4 @@
-body {
+.body_body {
     --color-primary: #A6A0D4;  /* https://www.w3schools.com/css/css3_variables.asp  */
     --color-primary-dark: #8880cb;
     --color-secondary: #252c6a;
@@ -175,7 +175,7 @@ body {
 }
 
 .menu {
-    width: calc(20%);
+    width: 200px;
     height: 100%;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -242,14 +242,13 @@ body {
     left: calc(25%);
     top: calc(20%);
     position: absolute;
-    background-color: var(--color-rainbow-pink);
-    text-align: center;
+        text-align: center;
     border-radius: var(--border-radius);
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
 }
 
-#addRowButton {
+.addRowButton {
     cursor: pointer;
 }
 
@@ -260,7 +259,7 @@ body {
 }
 
 .productInHuis__input-number:hover {
-    background-color: hotpink;
+    background-color: rgba(0, 0, 0, 0.2); /* https://www.w3schools.com/css/css_image_transparency.asp */
 }
 
 .product-dropdown {
@@ -269,6 +268,12 @@ body {
     border: none;
 }
 
+.product-dropdown:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+
 .removeButton {
     background-color: transparent;
     border: none;
@@ -276,20 +281,65 @@ body {
 
 .removeButton:hover {
     cursor: pointer;
-    background-color: #A6A0D4;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
-#theTable { /*https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse*/
+.theTable { /*https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse*/
     width: 90%;
     border-collapse: collapse;
     text-align: left;
 }
 
-#theTable tr {
+.theTable tr {
     border-bottom: 1px solid black
 }
 
-#theTable th:nth-child(3),
-#theTable td:nth-child(3) {
+.theTable th:nth-child(3),
+.theTable td:nth-child(3) {
     text-align: center;
 }
+
+
+#productInHuis__body {
+    background: url(../pngs/background-eet-share.png);
+    background-size: cover;
+    text-align: center;
+    justify-content: center;
+}
+
+#productInHuis__h1-producten {
+    top: 0;
+    position: absolute;
+    text-align: center;
+}
+
+.collapsible {  /* https://www.w3schools.com/howto/howto_js_collapsible.asp */
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active, .collapsible:hover {
+    background-color: #555;
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}
+
+#center {
+    width: 60%;
+    position: absolute;
+    left: 25%;
+}
+

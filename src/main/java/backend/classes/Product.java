@@ -22,6 +22,10 @@ public class Product {
     static {
         Winkel ahWinkel = new Winkel("Albert Heijn", 1);
         producten.add(new Product(1, "Bananen", "AH Bananen tros", ahWinkel, false, false, false, false, true, false, false, false));
+        producten.add(new Product(2, "Komkommer", "AH Komkommer", ahWinkel, false, false, false, true, false, false, false, false));
+        producten.add(new Product(3, "Gepasteuriseerde halfvolle melk", "AH Halfvolle melk", ahWinkel, false, false, true, false, false, false, false, false));
+        producten.add(new Product(3, "rundvlees", "AH Rundergehakt", ahWinkel, true, false, false, false, false, false, false, false));
+        producten.add(new Product(3, "Appelsap uit concentraat", "AH Appelsap", ahWinkel, false, true, false, false, false, false, false, false));
     }
 
     public Product(int productID, String beschrijving, String productNaam, Winkel winkel, Boolean isVleesware, Boolean isDrank, Boolean isZuivel, Boolean isGroente, Boolean isFruit, Boolean isKoek, Boolean isSnoep, Boolean isOverige) {

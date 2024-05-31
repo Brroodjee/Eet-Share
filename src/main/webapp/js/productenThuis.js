@@ -1,3 +1,18 @@
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+}
+
 function populateDropdown() {
     console.log("populateDropdown() function called");
     fetch('http://localhost:4711/eet-share/producten', {
@@ -22,8 +37,8 @@ function populateDropdown() {
         .catch(error => console.error('Error:', error));
 }
 
-document.getElementById("addRowButton").addEventListener('click', function() {
-    const table = document.querySelector("#theTable");
+document.querySelector(".addRowButton").addEventListener('click', function() {
+    const table = document.querySelector(".theTable");
     const tableTemplate = document.getElementById("productInHuis__Table-template");
     const cloneTable = tableTemplate.content.cloneNode(true);
     table.appendChild(cloneTable);
