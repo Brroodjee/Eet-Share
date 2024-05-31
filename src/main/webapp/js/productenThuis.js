@@ -29,5 +29,12 @@ document.getElementById("ProductInHuis__button--plaatsToevoegen").addEventListen
 
     populateDropdown();
 });
-//https://stackoverflow.com/questions/44586479/adding-new-div-on-button-click
 
+document.getElementById("addRowButton").addEventListener('click', function() {
+    const table = document.querySelector("#theTable");
+    const tableTemplate = document.getElementById("productInHuis__Table-template");
+    const cloneTable = tableTemplate.content.cloneNode(true);
+    table.appendChild(cloneTable);
+});
+//https://stackoverflow.com/questions/44586479/adding-new-div-on-button-click
+//https://www.sitepoint.com/community/t/adding-rows-to-table-with-button-to-remove/434396/5

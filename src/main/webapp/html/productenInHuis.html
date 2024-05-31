@@ -21,6 +21,7 @@
 
         <div id="productInHuis__container">
             <div class="grid-container">
+                <button id="addRowButton">Add a row</button>
                 <!--alles wat binnen de template valt komt hierin te staan-->
             </div>
         </div>
@@ -30,9 +31,33 @@
                 <select class="user-dropdown" name="users">  <!--https://www.w3schools.com/tags/tag_select.asp-->
                     <option>Selecteer gebruiker</option>
                 </select>
+
+
+                <table id="theTable">
+                    <tr>
+                        <th>qty</th>
+                        <th>product</th>
+                        <th>remove</th>
+                    </tr>
+                </table>
             </div>
         </template>
+        <template id="productInHuis__Table-template">
+            <tr>
+                <td><input type="number"/></td>
+                <td>
+                    <select class="user-dropdown" name="users">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer gebruiker</option>
+                    </select>
+                </td>
+                <td><button type="button" name="remove">Remove</button></td>
+            </tr>
+        </template>
+
 
         <script src="../js/productenThuis.js"></script>
     </body>
 </html>
+
+
+<!--https://www.sitepoint.com/community/t/adding-rows-to-table-with-button-to-remove/434396/6-->
