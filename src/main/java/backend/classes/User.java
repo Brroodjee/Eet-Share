@@ -71,4 +71,13 @@ public class User {
             return highestUserID + 1;
         }
     }
+
+    public static boolean exists(String email) {
+        for (User user : users) {
+            if (user.getEmail().equals(email)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

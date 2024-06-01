@@ -293,7 +293,7 @@ body {
 }
 
 .theTable tr {
-    border-bottom: 1px solid black
+    border-bottom: 1px solid black;
 }
 
 .theTable th:nth-child(3),
@@ -445,4 +445,45 @@ body {
     width: 50%;
     border-radius: 10px;
     margin-left: 10px;
+}
+
+.lijst__input-number {
+    width: 50px;
+    background-color: transparent;
+    border: none;
+}
+
+.lijst__input-number:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* https://www.w3schools.com/css/css_image_transparency.asp */
+}
+
+.lijst__dropdown-vleeswaren,
+.lijst__dropdown-zuivel,
+.lijst__dropdown-groente_en_fruit,
+.lijst__dropdown-drank,
+.lijst__dropdown-koek_en_snoep,
+.lijst__dropdown-overige {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.lijst__div {
+    background-color: #f1f1f1;
+}
+
+.lijst__div table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-left: 2%;
+}
+
+.lijst__div td {
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.lijst__checkbox {
+    text-align: center;
+    vertical-align: center;
 }
