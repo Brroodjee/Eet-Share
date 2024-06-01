@@ -40,4 +40,31 @@ public class ProductResource extends Application {
         JsonArray arrayBuilderProduct = arrayBuilder.build();
         return arrayBuilderProduct.toString();
     }
+
+    @GET
+    @Path("/vleeswaren")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getVleeswaren() {
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+        for (Product product : products) {
+            if (product.getIsVleeswaren()) { // Only include if isVleeswaren is true
+                JsonObjectBuilder productBuilder = Json.createObjectBuilder();
+                productBuilder.add("productID", product.getProductID());
+                productBuilder.add("beschrijving", product.getBeschrijving());
+                productBuilder.add("productNaam", product.getProductNaam());
+                productBuilder.add("winkel", product.getWinkel().toJson()); // assuming this method exists
+                productBuilder.add("isVleeswaren", product.getIsVleeswaren());
+                productBuilder.add("isDrank", product.getIsDrank());
+                productBuilder.add("isZuivel", product.getIsZuivel());
+                productBuilder.add("isGroente", product.getIsGroente());
+                productBuilder.add("isFruit", product.getIsFruit());
+                productBuilder.add("isKoek", product.getIsKoek());
+                productBuilder.add("isSnoep", product.getIsSnoep());
+                productBuilder.add("isOverige", product.getIsOverige());
+                arrayBuilder.add(productBuilder);
+            }
+        }
+        JsonArray arrayBuilderProduct = arrayBuilder.build();
+        return arrayBuilderProduct.toString();
+    }
 }
