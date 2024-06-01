@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorietenlijstje</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="lijst__body">
+<div class="lijst__div">
+    <h1>Favorietenlijstje</h1>
+    <div class="vleeswaren">
+        <h3>Vleeswaren</h3>
+        <button class="lijst__addRowButton-vleeswaren">voeg producten toe</button>
+        <table class="lijst__table-vleeswaren">
+            <tr>
+                <th>product</th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="lijst__dropdown-vleeswaren" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="zuivel">
+        <h3>zuivel</h3>
+        <button class="lijst__addRowButton-zuivel">voeg producten toe</button>
+        <table class="lijst__table-zuivel">
+            <tr>
+                <th>product</th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="lijst__dropdown-zuivel" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="groente-en-fruit">
+        <h3>groente en fruit</h3>
+        <button class="lijst__addRowButton-groente">voeg producten toe</button>
+        <table class="lijst__table-groente_en_fruit">
+            <tr>
+                <th>product</th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="lijst__dropdown-groente_en_fruit" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="dranken">
+        <h3>dranken</h3>
+        <button class="lijst__addRowButton-dranken">voeg producten toe</button>
+        <table class="lijst__table-drank">
+            <tr>
+                <th>product</th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="lijst__dropdown-drank" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="koek-en-snoep">
+        <h3>koek en snoep</h3>
+        <button class="lijst__addRowButton-koek">voeg producten toe</button>
+        <table class="lijst__table-koek_en_snoep">
+            <tr>
+                <th>product</th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="lijst__dropdown-koek_en_snoep" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="overige">
+        <h3>overige</h3>
+        <button class="lijst__addRowButton-overige">voeg producten toe</button>
+        <table class="lijst__table-overige">
+            <tr>
+                <th>product</th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="lijst__dropdown-overige" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<template class="lijst__table-template-vleeswaren">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-vleeswaren" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+    </tr>
+</template>
+<template class="lijst__table-template-zuivel">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-zuivel" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+    </tr>
+</template>
+<template class="lijst__table-template-groente">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-groente_en_fruit" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+    </tr>
+</template>
+<template class="lijst__table-template-dranken">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-drank" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+    </tr>
+</template>
+<template class="lijst__table-template-koek">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-koek_en_snoep" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+    </tr>
+</template>
+<template class="lijst__table-template-overige">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-overige" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+    </tr>
+</template>
+<script src="../js/lijst.js"></script>
+</body>
+</html>
