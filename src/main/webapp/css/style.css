@@ -343,3 +343,35 @@
     left: 25%;
 }
 
+.productenInHuis__input--text {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    width: 50%;
+}
+
+.productenInHuis__input--text::placeholder {  /* https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder */
+    color: white;
+}
+
+#center > button.collapsible:nth-of-type(1) {  /* https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type */
+    background-color: #A6A0D4;
+}
+
+#center > button.collapsible:nth-of-type(2) {
+    background-color: #E197BB;
+}
+
+#center > button.collapsible:nth-of-type(3) {
+    background-color: #F49C8A;
+}
+
+#center > button.collapsible:nth-of-type(4) {
+    background-color: #F1C09C;
+}
+
+#center > button.collapsible:nth-of-type(5) {
+    background-color: #B8C9B3;
+}
+
