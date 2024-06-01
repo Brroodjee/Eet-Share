@@ -375,3 +375,64 @@
     background-color: #B8C9B3;
 }
 
+.lijst__div {
+    background-color: white;
+    position: absolute;
+    align-items: center;
+    width: 50%;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+}
+
+.lijst__div h1 {
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.vleeswaren h3 {
+    text-align: center;
+    background-color: var(--color-rainbow-pink);
+    width: 50%;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.zuivel h3 {
+    text-align: center;
+    background-color: var(--color-rainbow-orange);
+    width: 50%;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.groente-en-fruit h3 {
+    text-align: center;
+    background-color: var(--color-rainbow-yellow);
+    width: 50%;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.dranken h3 {
+    text-align: center;
+    background-color: var(--color-rainbow-green);
+    width: 50%;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.koek-en-snoep h3 {
+    text-align: center;
+    background-color: var(--color-rainbow-moss);
+    width: 50%;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.overige h3 {
+    text-align: center;
+    background-color: var(--color-rainbow-blue);
+    width: 50%;
+    border-radius: 10px;
+    margin-left: 10px;
+}
