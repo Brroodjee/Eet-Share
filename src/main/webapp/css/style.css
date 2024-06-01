@@ -388,7 +388,6 @@ body {
 
 .lijst__div {
     background-color: white;
-    align-items: center;
     width: 50%;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
     border-radius: var(--border-radius);
@@ -487,3 +486,94 @@ body {
     text-align: center;
     vertical-align: center;
 }
+
+#productInHuis__menu {
+    background-color: white;
+    width: 15px;
+    height: 100%;
+    position: fixed;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    transition: width 0.3s;
+    overflow: hidden;
+}
+
+#productInHuis__menu:hover {
+    width: 200px;
+}
+
+#productInHuis__menu a {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--color-secondary);
+}
+
+#productInHuis__menu a:hover {
+    text-decoration: underline;
+}
+
+.huishouden__body {
+    background: url(../pngs/background-eet-share.png);
+    background-size: cover;
+    text-align: center;
+    justify-content: center;
+}
+
+#huishouden__menu {
+    background-color: white;
+    width: 15px;
+    height: 100%;
+    position: fixed;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    transition: width 0.3s;
+    overflow: hidden;
+}
+
+#huishouden__menu:hover {
+    width: 200px;
+}
+
+#huishouden__menu a {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--color-secondary);
+}
+
+#huishouden__menu a:hover {
+    text-decoration: underline;
+}
+
+#boodschappenlijstje__menu {
+    background-color: white;
+    width: 15px;
+    height: 100%;
+    position: fixed;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    transition: width 0.3s;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+}
+
+#boodschappenlijstje__menu:hover {
+    width: 200px;
+}
+
+#boodschappenlijstje__menu a {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--color-secondary);
+}
+
+#boodschappenlijstje__menu a:hover {
+    text-decoration: underline;
+}
+
