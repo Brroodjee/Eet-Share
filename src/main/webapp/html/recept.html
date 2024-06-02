@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recepten</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="lijst__body">
+    <div id="boodschappenlijstje__menu">
+        <h1>Menu</h1>
+        <a href="homepage.html">Homepage</a>
+        <a href="#">Boodschappenlijst</a>
+        <a href="Huishouden.html">Huishouden</a>
+        <a href="">Kookboek</a>
+    </div>
+    <div class="recept__div">
+        <div class="hero">
+            <label for="input-file" id="drop-area">
+                <input type="file" accept="image/*" id="input-file" hidden>
+                <div id="img-view">
+                    <img src="../pngs/camera.png" alt="camerapng">
+                    <p>Drag and drop or click here <br> to upload img</p>
+                    <span>Upload any images from desktop</span>
+                </div>
+            </label>
+        </div>
+        <input type="text" placeholder="<<dish name>>" id="dish-name">
+        <label id="serving-label">Servings</label>
+        <input type="text" placeholder="4" id="serving-text">
+        <label id="cooking-label">Cooking time</label>
+        <input type="text" placeholder="50 minutes" id="cooking-text">
+        <label id="prep-label">prep time</label>
+        <input type="text" placeholder="15 minutes" id="prep-text">
+        <table id="line">
+            <tr>
+                <th>.</th>
+            </tr>
+        </table>
+        <div id="ingredients">
+            <select name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </div>
+        <label id="instructions">instructions</label>
+        <input type="text" id="instructions-text"/>
+    </div>
+<script src="../js/recepten.js"></script>
+</body>
+
+</html>

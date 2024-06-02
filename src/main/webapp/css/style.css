@@ -382,7 +382,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
     background: url(../pngs/background-eet-share.png);
 }
 
@@ -598,4 +597,119 @@ body {
     margin-inline-start: 0;
     margin-inline-end: 0;
     font-size: 18px;
+}
+
+.recept__div {
+    width: 600px;
+    background-color: #f1f1f1;
+    align-items: center;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+}
+
+.hero {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#drop-area {
+    width: 100%;
+    height: 150px;
+    background: #fff;
+    text-align: center;
+}
+
+#img-view {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed #bbb5ff;
+    background: #f7f8ff center;
+    background-size: cover;
+}
+
+#img-view span {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    margin-top: 15px;
+}
+
+#img-view:hover {
+    cursor: pointer;
+}
+
+#dish-name {
+    background-color: #f1f1f1;
+    border: none;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    font-size: 24px;
+}
+
+#serving-label {
+    padding-left: 75px;
+}
+
+#serving-text {
+    padding-left: 7px;
+    padding-right: 75px;
+    background-color: #f1f1f1;
+    border: none;
+    width: 20px;
+}
+
+#serving-text:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#cooking-text {
+    padding-left: 7px;
+    padding-right: 40px;
+    background-color: #f1f1f1;
+    border: none;
+    width: 40px;
+}
+
+#cooking-text:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#prep-text {
+    padding-left: 7px;
+    padding-right: 40px;
+    background-color: #f1f1f1;
+    border: none;
+    width: 40px;
+}
+
+#prep-text:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#line {
+    width: 480px;
+    border-top: solid 1px black;
+    margin-left: 65px;
+    color: #f1f1f1;
+}
+
+#ingredients {
+    background-color: #85BFA9;
+    width: 200px;
+    margin-left: 65px;
+    height: 500px;
+    margin-bottom: 50px;
+}
+
+#ingredients select {
+    width: 100%;
+    background-color: #85BFA9;
+    border: none
+}
+
+#instructions {
+    width: 100px;
+    display: block;
 }
