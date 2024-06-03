@@ -36,18 +36,19 @@ public class GetResource extends Application {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String addUsers(String jsonBody) {
         JsonObjectBuilder responseObject = Json.createObjectBuilder();
-
+        System.out.println(jsonBody);
         try {
             JsonObject jsonObject = Json.createReader(new StringReader(jsonBody)).readObject();
+            System.out.println(jsonObject);
             String naam = jsonObject.getString("naam");
             String email = jsonObject.getString("email");
             String wachtwoord = jsonObject.getString("wachtwoord");
             int userID = User.getNewUserID();
 
             User user = new User(naam, email, wachtwoord, userID);
-            users.add(user);
             responseObject.add("user toegevoegd met userID:", userID);
         } catch (Exception e) {
             responseObject.add("error", e.getMessage());

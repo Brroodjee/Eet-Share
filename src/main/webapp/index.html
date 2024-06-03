@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Login / Sign up</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/register.js"></script>
 </head>
 <body class="body_body">
 <div class="container">
@@ -29,19 +30,19 @@
         <h1 class="form__title">Create Account</h1>
         <div class="form__message form__message--error"></div>
         <div class="form__input-group">
-            <input type="text" class="form__input" placeholder="Username">
+            <input type="text" class="form__input" placeholder="Username" id="username">
             <div class="form__input-error-message"></div>
         </div>
         <div class="form__input-group">
-            <input type="text" class="form__input" placeholder="Email Adress">
+            <input type="text" class="form__input" placeholder="Email Adress" id="email">
             <div class="form__input-error-message"></div>
         </div>
         <div class="form__input-group">
-            <input type="password" class="form__input" placeholder="Password">
+            <input type="password" class="form__input" placeholder="Password" id="passwordField">
             <div class="form__input-error-message"></div>
         </div>
         <div class="form__input-group">
-            <input type="password" class="form__input" placeholder="Confirm password">
+            <input type="password" class="form__input" placeholder="Confirm password" id="confirmPasswordField">
             <div class="form__input-error-message"></div>
         </div>
         <button class="form__button form__button-createAccount" type="submit">Continue</button>
@@ -52,4 +53,5 @@
 </div>
 <script src="js/main.js"></script>
 </body>
+
 </html>
