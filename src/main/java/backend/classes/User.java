@@ -1,10 +1,11 @@
 package backend.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
     protected String naam;
     protected String email;
     protected String wachtwoord;
@@ -13,20 +14,19 @@ public class User {
     private static List<User> users = new ArrayList<>();
 
     static {
-        users.add(new User("Bo", "bo_harmsen@outlook.com", "boopboop789", 000001));
-        users.add(new User("Tom", "tom@outlook.com", "boopboop789", 000002));
-        users.add(new User("Jessica", "jessica@outlook.com", "boopboop789", 000003));
-        users.add(new User("Maus", "maus@outlook.com", "boopboop789", 000004));
-        users.add(new User("Maurice", "maurice@outlook.com", "boopboop789", 000005));
+        users.add(new Gebruiker(000001, "Bo", "bo_harmsen@outlook.com", "boopboop789", 000001));
+        users.add(new Gebruiker(000002, "Tom", "tom@outlook.com", "boopboop789", 000002));
+        users.add(new Gebruiker(000003, "Jessica", "jessica@outlook.com", "boopboop789", 000003));
+        users.add(new Gebruiker(000004, "Maus", "maus@outlook.com", "boopboop789", 000004));
+        users.add(new Gebruiker(000005, "Maurice", "maurice@outlook.com", "boopboop789", 000005));
     }
-
 
     public User(String naam, String email, String wachtwoord, int userID) {
         this.naam = naam;
         this.wachtwoord = wachtwoord;
         this.userID = userID;
 
-        if(email.contains("@") && email.contains(".") && email.length() >=5){
+        if (email.contains("@") && email.contains(".") && email.length() >= 5) {
             this.email = email;
         } else {
             throw new IllegalArgumentException("Het ingevoerde emailadres is niet geldig");
@@ -37,6 +37,10 @@ public class User {
 
     public static List<User> getUsers() {
         return users;
+    }
+
+    public static void setUsers(List<User> users) {
+        User.users = users;
     }
 
     public String getNaam() {
@@ -60,13 +64,10 @@ public class User {
     }
 
     public static int getNewUserID() {
-        List<User> newUsers = new ArrayList<>();
-
         if (users.isEmpty()) {
             return 1;
         } else {
             users.sort(Comparator.comparingInt(User::getUserID).reversed());
-
             int highestUserID = users.get(0).getUserID();
             return highestUserID + 1;
         }
