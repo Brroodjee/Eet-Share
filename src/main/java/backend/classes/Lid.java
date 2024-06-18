@@ -7,9 +7,10 @@ import javax.json.JsonObjectBuilder;
 public class Lid extends User {
     private int lidID;
 
-    public Lid(int lidID, String naam, String email, String wachtwoord, int userID) {
-        super(naam, email, wachtwoord, userID);
+    public Lid(int lidID, String username,  String password) {
+        super(username, password);
         this.lidID = lidID;
+        this.role = "lid";
     }
 
     public int getLidID() {
@@ -19,10 +20,8 @@ public class Lid extends User {
     public JsonObject toJson() {
         JsonObjectBuilder lidBuilder = Json.createObjectBuilder();
         lidBuilder.add("lidID", this.lidID);
-        lidBuilder.add("naam", this.naam);
-        lidBuilder.add("email", this.email);
-        lidBuilder.add("wachtwoord", this.wachtwoord);
-        lidBuilder.add("userID", this.userID);
+        lidBuilder.add("naam", this.username);
+        lidBuilder.add("wachtwoord", this.password);
         return lidBuilder.build();
     }
 }

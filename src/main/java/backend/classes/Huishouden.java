@@ -11,17 +11,6 @@ public class Huishouden {
 
     private static List<Huishouden> huishoudens = new ArrayList<>();
 
-    static {
-        Hoofd hoofd1 = new Hoofd(1, "Bo", "bo_harmsen@outlook.com", "boopboop789", 000001);
-        Lid lid1 = new Lid(1, "Maus", "maus@outlook.com", "boopboop789", 000004);
-        Lid lid2 = new Lid(2, "Jessica", "jessica@outlook.com", "boopboop789", 000003);
-
-        Huishouden huishouden = new Huishouden("Harmsen", hoofd1);
-        huishouden.addLid(lid1);
-        huishouden.addLid(lid2);
-
-        huishoudens.add(huishouden);
-    }
 
     public Huishouden(String huishoudenNaam, Hoofd hoofd) {
         this.huishoudenNaam = huishoudenNaam;
