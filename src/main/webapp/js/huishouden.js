@@ -2,7 +2,7 @@ const token = window.sessionStorage.getItem("myJWT");
 console.log("Token:", token);  // Toegevoegd om het token te loggen en te controleren
 function GetHuishoudenNaamEnLeden() {
     console.log("Huishouden gegevens ophalen");
-    fetch('http://localhost:4711/eet-share/huishouden', {
+    fetch('https://tests-1718633149689.azurewebsites.net/eet-share/huishouden', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "huishoudenNaam": document.querySelector("#huishouden__modal-naam").value,
         });
 
-        fetch("http://localhost:4711/eet-share/huishouden", {
+        fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
