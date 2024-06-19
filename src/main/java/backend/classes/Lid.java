@@ -7,8 +7,8 @@ import javax.json.JsonObjectBuilder;
 public class Lid extends User {
     private int lidID;
 
-    public Lid(int lidID, String username,  String password) {
-        super(username, password);
+    public Lid(int lidID, String username, String password, int userID, String role) {
+        super(username, password, userID, role);
         this.lidID = lidID;
         this.role = "lid";
     }

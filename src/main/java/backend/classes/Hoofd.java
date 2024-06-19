@@ -8,13 +8,12 @@ import java.util.Comparator;
 import java.util.List;
 
 
-
 public class Hoofd extends User {
     private int hoofdID;
     private static List<Hoofd> hoofden = new ArrayList<>();
 
-    public Hoofd(int hoofdID, String username, String password) {
-        super(username, password);
+    public Hoofd(int hoofdID, String username, String password, int userID, String role) {
+        super(username, password, userID, role);
         this.hoofdID = hoofdID;
         this.role = "hoofd";
     }

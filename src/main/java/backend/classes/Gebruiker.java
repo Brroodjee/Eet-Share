@@ -1,21 +1,17 @@
 package backend.classes;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
 public class Gebruiker extends User {
     private int gebruikerID;
-    private static List<Gebruiker> gebruikers = new ArrayList<>();
+    private static int nextID = 1;
 
     public Gebruiker() {
-        this.role = "Gebruiker";
-        this.gebruikerID = getNewGebruikerID();
+        this.role = "gebruiker";
+        this.gebruikerID = nextID++;
     }
 
-    public Gebruiker(int gebruikerID, String username, String password) {
-        super(username, password);
-        this.gebruikerID = gebruikerID;
+    public Gebruiker(String username, String password, int userID, String role) {
+        super(username, password, userID, role);
+        this.gebruikerID = nextID++;
         this.role = "gebruiker";
     }
 
@@ -23,31 +19,17 @@ public class Gebruiker extends User {
         return gebruikerID;
     }
 
-    public static int getNewGebruikerID() {
-        if (gebruikers.isEmpty()) {
-            return 1;
-        } else {
-            gebruikers.sort(Comparator.comparingInt(Gebruiker::getGebruikerID).reversed());
-            int highestGebruikerID = gebruikers.get(0).getGebruikerID();
-            return highestGebruikerID + 1;
-        }
-    }
-
-
     public void createHousehold(String householdName) {
-        int newHoofdID = Hoofd.getNewHoofdID();
-        Hoofd nieuweHoofd = new Hoofd(newHoofdID, this.getUsername(), this.getPassword());
+        Hoofd nieuweHoofd = new Hoofd(this.getGebruikerID(), this.getUsername(), this.getPassword(), this.getUserID(), "hoofd");
         Huishouden nieuwHuishouden = new Huishouden(householdName, nieuweHoofd);
-
-        this.role = "hoofd";
-        nieuweHoofd.setHoofdID(newHoofdID);
-        Hoofd.getHoofden().add(nieuweHoofd);
         Huishouden.getHuishoudens().add(nieuwHuishouden);
-    }
+    }  // de gebruiker wordt nog niet omgezet naar een Hoofd bij de users zelf, maar dat komt later, hij wordt al wel als Hoofd toegevoegd in het huishouden.
 
     public void acceptInvitation() {
+        // Implementatie voor het accepteren van een uitnodiging
     }
 
     public void declineInvitation() {
+        // Implementatie voor het weigeren van een uitnodiging
     }
 }

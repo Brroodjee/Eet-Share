@@ -9,15 +9,19 @@ import java.util.List;
 public class User implements Principal, Serializable {
     protected String username;
     protected String password;
+    protected int userID;
     protected String role;
     private static List<User> users = new ArrayList<>();
 
-    public User() {}
+    public User() {
+        this.userID = getNewUserID();
+    }
 
-    public User(String username, String password) {
+    public User(String username, String password, int userID, String role) {
         this.username = username;
         this.password = password;
-        this.role = "gebruiker";
+        this.userID = userID;
+        this.role = role;
     }
 
     public static List<User> getUsers() {
@@ -58,4 +62,22 @@ public class User implements Principal, Serializable {
     public String getName() {
         return this.username;
     }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public static int getNewUserID() {
+        List<User> newUsers = new ArrayList<>();
+
+        if (users.isEmpty()) {
+            return 1;
+        } else {
+            users.sort(Comparator.comparingInt(User::getUserID).reversed());
+
+            int highestUserID = users.get(0).getUserID();
+            return highestUserID + 1;
+        }
+    }
+
 }
