@@ -20,26 +20,43 @@ public class HuishoudenResource extends Application {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getHuishouden() {
+    public String getHuishouden(@Context SecurityContext securityContext) {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+        String username = securityContext.getUserPrincipal().getName();
+        User user = getUserByUsername(username);
 
-        for (Huishouden huishouden : huishoudens) {
-            JsonObjectBuilder huishoudenBuilder = Json.createObjectBuilder();
-            huishoudenBuilder.add("Hoofd", huishouden.getHoofd().toJson());
-            huishoudenBuilder.add("huishoudenNaam", huishouden.getHuishoudenNaam());
+        if (user != null && isValidUser(user)) {
+            for (Huishouden huishouden : huishoudens) {
+                boolean isInHuishouden = false;
+                if (huishouden.getHoofd() != null && huishouden.getHoofd().getUsername().equals(username)) {
+                    isInHuishouden = true;
+                } else {
+                    for (Lid lid : huishouden.getLeden()) {
+                        if (lid.getUsername().equals(username)) {
+                            isInHuishouden = true;
+                            break;
+                        }
+                    }
+                }
 
-            JsonArrayBuilder ledenArrayBuilder = Json.createArrayBuilder();
-            for (Lid lid : huishouden.getLeden()) {
-                ledenArrayBuilder.add(lid.toJson());
+                if (isInHuishouden) {
+                    JsonObjectBuilder huishoudenBuilder = Json.createObjectBuilder();
+                    huishoudenBuilder.add("Hoofd", huishouden.getHoofd().toJson());
+                    huishoudenBuilder.add("huishoudenNaam", huishouden.getHuishoudenNaam());
+
+                    JsonArrayBuilder ledenArrayBuilder = Json.createArrayBuilder();
+                    for (Lid lid : huishouden.getLeden()) {
+                        ledenArrayBuilder.add(lid.toJson());
+                    }
+                    huishoudenBuilder.add("leden", ledenArrayBuilder);
+
+                    arrayBuilder.add(huishoudenBuilder);
+                }
             }
-            huishoudenBuilder.add("leden", ledenArrayBuilder);
-
-            arrayBuilder.add(huishoudenBuilder);
         }
-
         JsonArray arraybuilderHuishouden = arrayBuilder.build();
         return arraybuilderHuishouden.toString();
-    } // deze werkt nog niet met de website, komt straks
+    }
 
     @POST
     @Path("/aanmaken")

@@ -40,11 +40,6 @@ public class Hoofd extends User {
         // Logica om een gebruiker uit te nodigen voor het huishouden
     }
 
-    public List<User> getHouseholdMembers() {
-        // Logica om huishoudleden op te halen
-        return null;
-    }
-
     public static List<Hoofd> getHoofden() {
         return hoofden;
     }
