@@ -24,6 +24,7 @@ export default class LoginService {
             .then(myJson => {
                 window.sessionStorage.setItem("myJWT", myJson.Jwt);
                 window.location.href = "/html/homepage.html";
+                console.log(myJson)
                 return myJson;
             });
     }

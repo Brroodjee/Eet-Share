@@ -42,6 +42,7 @@ public class HuishoudenResource extends Application {
     } // deze werkt nog niet met de website, komt straks
 
     @POST
+    @Path("/aanmaken")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed("gebruiker")

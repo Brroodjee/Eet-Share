@@ -1,9 +1,10 @@
 package backend.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Product {
+public class Product implements Serializable {
     private int productID;
     private String beschrijving;
     private String productNaam;
@@ -93,5 +94,9 @@ public class Product {
 
     public static List<Product> getProducten() {
         return producten;
+    }
+
+    public static void setProducten(List<Product> producten) {
+        Product.producten = producten;
     }
 }

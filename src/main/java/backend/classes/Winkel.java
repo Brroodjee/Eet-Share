@@ -3,13 +3,15 @@ package backend.classes;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Winkel {
+public class Winkel implements Serializable {
     private String winkelNaam;
     private int winkelID;
     private ArrayList<Product> producten;
+    private static List<Winkel> winkels = new ArrayList<>();
 
     public Winkel(String winkelNaam, int winkelID) {
         this.winkelNaam = winkelNaam;
@@ -22,6 +24,14 @@ public class Winkel {
 
     public int getWinkelID() {
         return winkelID;
+    }
+
+    public static List<Winkel> getWinkels() {
+        return winkels;
+    }
+
+    public static void setWinkels(List<Winkel> winkels) {
+        Winkel.winkels = winkels;
     }
 
     public JsonObject toJson() {

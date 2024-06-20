@@ -42,7 +42,7 @@ public class Hoofd extends User {
 
     public List<User> getHouseholdMembers() {
         // Logica om huishoudleden op te halen
-        return null; // Ter vervanging van echte implementatie
+        return null;
     }
 
     public static List<Hoofd> getHoofden() {

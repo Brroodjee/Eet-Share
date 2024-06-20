@@ -1,11 +1,9 @@
 package backend.security;
 
-import backend.classes.*;
-
+import backend.classes.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
-import backend.classes.User;
 
 import javax.crypto.SecretKey;
 import javax.ws.rs.Consumes;
@@ -21,21 +19,22 @@ import java.util.List;
 @Path("/login")
 public class LoginResource {
 
-    public static final SecretKey KEY = MacProvider.generateKey();
-
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response login(User user){
 
-        if (isValidUser(user)) {
+        User authenticatedUser = findAuthenticatedUser(user.getUsername(), user.getPassword());
+
+        if (authenticatedUser != null) {
             String token = Jwts.builder()
                     .setSubject(user.getUsername())
                     .setIssuedAt(new Date())
                     .setExpiration(new Date(System.currentTimeMillis() + 3600000))
-                    .claim("role", "gebruiker")
-                    .signWith(SignatureAlgorithm.HS256, KEY)
+                    .claim("role", user.getRole())
+                    .signWith(SignatureAlgorithm.HS256, JwtKeyProvider.KEY)
                     .compact();
+
 
             return Response.ok(new AbstractMap.SimpleEntry<>("Jwt", token)).build();
         } else {
@@ -46,13 +45,13 @@ public class LoginResource {
         }
     }
 
-    private boolean isValidUser(User user) {
+    private User findAuthenticatedUser(String username, String password) {
         List<User> users = User.getUsers();
         for (User storedUser : users) {
-            if (storedUser.getUsername().equals(user.getUsername()) && storedUser.getPassword().equals(user.getPassword())) {
-                return true;
+            if (storedUser.getUsername().equals(username) && storedUser.validatePassword(password)) {
+                return storedUser;
             }
         }
-        return false;
+        return null;
     }
 }

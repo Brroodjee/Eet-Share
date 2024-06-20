@@ -16,7 +16,7 @@ function GetHuishoudenNaamEnLeden() {
             return response.json();
         })
         .then(data => {
-            const huishoudenNaamElement = document.getElementById("huishouden__h1-naam");
+            const huishoudenNaamElement = document.querySelector("#huishouden__h1-naam");
             const huishoudenGrid = document.querySelector(".huishouden__grid");
             const template = document.querySelector("template");
 
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "huishoudenNaam": document.querySelector("#huishouden__modal-naam").value,
         });
 
-        fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden", {
+        fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden/aanmaken", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

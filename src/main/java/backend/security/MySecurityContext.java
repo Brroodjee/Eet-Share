@@ -1,6 +1,6 @@
 package backend.security;
 
-import backend.classes.*;
+import backend.classes.User;
 
 import javax.ws.rs.core.SecurityContext;
 import java.security.Principal;
@@ -14,30 +14,26 @@ public class MySecurityContext implements SecurityContext {
         this.scheme = scheme;
     }
 
+    @Override
     public Principal getUserPrincipal() {
-
-        return (Principal) this.user;
+        return this.user;
     }
 
     @Override
-    public boolean isUserInRole(String s) {
-        if (user.getRole() != null) {
-
-            System.out.printf("%s equals %s", s, user.getRole());
-            return s.equals(user.getRole());
+    public boolean isUserInRole(String role) {
+        if (user != null && user.getRole() != null) {
+            return role.equals(user.getRole());
         }
-        return true;
+        return false;
     }
 
     @Override
     public boolean isSecure() {
-
         return "https".equals(this.scheme);
     }
 
     @Override
     public String getAuthenticationScheme() {
-
         return SecurityContext.BASIC_AUTH;
     }
 }

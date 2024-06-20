@@ -1,13 +1,16 @@
 package backend.security;
 
+import backend.classes.Gebruiker;
+import backend.classes.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
-import backend.classes.User;
-import backend.classes.Gebruiker;
 
 import javax.crypto.SecretKey;
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.AbstractMap;
@@ -16,8 +19,6 @@ import java.util.List;
 
 @Path("/register")
 public class RegisterResource {
-
-    public static final SecretKey KEY = MacProvider.generateKey();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -33,7 +34,7 @@ public class RegisterResource {
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 3600000))
                 .claim("role", role)
-                .signWith(SignatureAlgorithm.HS256, KEY)
+                .signWith(SignatureAlgorithm.HS256, JwtKeyProvider.KEY)
                 .compact();
 
         return Response.ok(new AbstractMap.SimpleEntry<>("Jwt", token)).build();

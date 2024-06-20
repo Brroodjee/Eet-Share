@@ -1,10 +1,10 @@
 package backend.security;
 
+import backend.classes.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
-import backend.classes.User;
 
 import javax.annotation.Priority;
 import javax.ws.rs.Priorities;
@@ -24,10 +24,10 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         MySecurityContext msc = null;
 
         String authHeader = requestCtx.getHeaderString(HttpHeaders.AUTHORIZATION);
-        if (authHeader != null && authHeader.startsWith("Bearer")) {
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring("Bearer".length()).trim();
             try {
-                JwtParser parser = Jwts.parser().setSigningKey(RegisterResource.KEY);
+                JwtParser parser = Jwts.parser().setSigningKey(JwtKeyProvider.KEY);
                 Claims claims = parser.parseClaimsJws(token).getBody();
 
                 String username = claims.getSubject();
@@ -39,7 +39,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
                     }
                 }
             } catch (JwtException | IllegalArgumentException e) {
-                System.out.println("Invalid JWT");
+                System.out.println("Invalid JWT: " + e.getMessage());
             }
         }
 

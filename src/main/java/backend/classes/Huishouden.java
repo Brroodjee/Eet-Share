@@ -1,9 +1,10 @@
 package backend.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Huishouden {
+public class Huishouden implements Serializable {
     private String huishoudenNaam;
     private Hoofd hoofd;
     private ArrayList<Lid> leden;
@@ -61,5 +62,9 @@ public class Huishouden {
 
     public static List<Huishouden> getHuishoudens() {
         return huishoudens;
+    }
+
+    public static void setHuishoudens(List<Huishouden> huishoudens) {
+        Huishouden.huishoudens = huishoudens;
     }
 }
