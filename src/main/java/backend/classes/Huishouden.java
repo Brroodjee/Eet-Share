@@ -1,5 +1,9 @@
 package backend.classes;
 
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +11,7 @@ import java.util.List;
 public class Huishouden implements Serializable {
     private String huishoudenNaam;
     private Hoofd hoofd;
+
     private ArrayList<Lid> leden;
     private ArrayList<Product> producten;
 
@@ -67,4 +72,11 @@ public class Huishouden implements Serializable {
     public static void setHuishoudens(List<Huishouden> huishoudens) {
         Huishouden.huishoudens = huishoudens;
     }
+
+    public JsonObject toJson() {
+        JsonObjectBuilder huishoudenBuilder = Json.createObjectBuilder();
+        huishoudenBuilder.add("huishoudenNaam", this.huishoudenNaam);
+        return huishoudenBuilder.build();
+    }
+
 }

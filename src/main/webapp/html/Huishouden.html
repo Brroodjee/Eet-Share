@@ -14,8 +14,8 @@
     <a href="">Kookboek</a>
     <br>
     <br>
-    <a href="">Uitnodigen nieuw familielid</a>
-    <a href="">Accepteren/weigeren uitnodiging</a>
+    <a href="#" id="inviteMember">Uitnodigen nieuw familielid</a>
+    <a href="#" id="acceptInvite">Accepteren/weigeren uitnodiging</a>
 </div>
 <div class="huishouden__div">
     <h1>Huishouden</h1>
@@ -25,14 +25,39 @@
 
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" id="span1">&times;</span>
             <p>Maak een huishouden aan</p>
             <form id="huishouden__form-create">
                 <input type="text" placeholder="Huishouden naam" id="huishouden__modal-naam"/>
                 <button type="submit" id="huishouden__modal-button">Create</button>
             </form>
         </div>
-        <script src="../js/modal.js"></script>
+        <script src="../js/createHouseholdModal.js"></script>
+    </div>
+    <div id="inviteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="span2">&times;</span>
+            <p>Uitnodigen nieuw familielid</p>
+            <form id="invite__form-create">
+                <select id="invite__dropdown">
+                </select>
+                <button type="submit" id="invite__modal-button">Invite</button>
+            </form>
+        </div>
+        <script src="../js/InviteMemberModal.js"></script>
+    </div>
+    <div id="acceptOrDeclineModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="span3">&times;</span>
+            <p>Accepteren/Weigeren uitnodigingen</p>
+            <form id="invite__form-accept-decline">
+                <select id="invites__dropdown">
+                </select>
+                <button type="submit" id="invite__modal-button-decline">x</button>
+                <button type="submit" id="invite__modal-button-accept">✓</button>
+            </form>
+        </div>
+        <script src="../js/AcceptOrDeclineModal.js"></script>
     </div>
     <div class="huishouden__grid">
         <!-- hier komen de divs van de personen te staan-->

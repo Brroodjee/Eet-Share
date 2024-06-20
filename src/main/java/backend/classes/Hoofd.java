@@ -36,20 +36,21 @@ public class Hoofd extends User {
         this.hoofdID = hoofdID;
     }
 
-    public void inviteUser(Gebruiker gebruiker) {
-        // Logica om een gebruiker uit te nodigen voor het huishouden
-    }
-
     public static List<Hoofd> getHoofden() {
         return hoofden;
+    }
+
+    public static void setHoofden(List<Hoofd> hoofden) {
+        Hoofd.hoofden = hoofden;
     }
 
     public JsonObject toJson() {
         JsonObjectBuilder hoofdBuilder = Json.createObjectBuilder();
         hoofdBuilder.add("hoofdID", this.hoofdID);
-        hoofdBuilder.add("naam", this.username);
-        hoofdBuilder.add("wachtwoord", this.password);
+        hoofdBuilder.add("naam", this.getUsername());
+        hoofdBuilder.add("wachtwoord", this.getPassword());
+        hoofdBuilder.add("userID", this.getUserID());
+        hoofdBuilder.add("role", this.getRole());
         return hoofdBuilder.build();
     }
-
 }

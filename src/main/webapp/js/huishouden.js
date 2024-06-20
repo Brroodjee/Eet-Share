@@ -1,5 +1,5 @@
 const token = window.sessionStorage.getItem("myJWT");
-console.log("Token:", token);  // Toegevoegd om het token te loggen en te controleren
+
 function GetHuishoudenNaamEnLeden() {
     console.log("Huishouden gegevens ophalen");
     fetch('https://tests-1718633149689.azurewebsites.net/eet-share/huishouden', {
@@ -16,6 +16,7 @@ function GetHuishoudenNaamEnLeden() {
             return response.json();
         })
         .then(data => {
+            console.log("Ontvangen data:", data);
             const huishoudenNaamElement = document.querySelector("#huishouden__h1-naam");
             const huishoudenGrid = document.querySelector(".huishouden__grid");
             const template = document.querySelector("template");
@@ -27,15 +28,22 @@ function GetHuishoudenNaamEnLeden() {
                 huishoudenNaamElement.innerText = huishouden.huishoudenNaam;
 
                 const hoofd = huishouden.Hoofd;
-                let clone = template.content.cloneNode(true);
-                clone.querySelector(".role").innerText = "Hoofd";
-                clone.querySelector(".name").innerText = hoofd.name;
-                huishoudenGrid.appendChild(clone);
+                console.log("Hoofd:", hoofd);
+
+                if (hoofd) {
+                    let clone = template.content.cloneNode(true);
+                    clone.querySelector(".role").innerText = "Hoofd";
+                    clone.querySelector(".name").innerText = hoofd.naam;
+                    huishoudenGrid.appendChild(clone);
+                } else {
+                    console.error("Hoofd object niet gevonden of naam ontbreekt");
+                }
 
                 huishouden.leden.forEach(lid => {
-                    clone = template.content.cloneNode(true);
+                    console.log("Lid:", lid);
+                    let clone = template.content.cloneNode(true);
                     clone.querySelector(".role").innerText = "Lid";
-                    clone.querySelector(".name").innerText = lid.name;
+                    clone.querySelector(".name").innerText = lid.naam;
                     huishoudenGrid.appendChild(clone);
                 });
             } else {
