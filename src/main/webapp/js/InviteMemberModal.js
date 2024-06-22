@@ -1,27 +1,24 @@
-const inviteMember = document.getElementById("inviteModal");
+document.addEventListener("DOMContentLoaded", () => {
+    const inviteMember = document.getElementById("inviteModal");
+    const Btn = document.getElementById("inviteMember");
+    const span2 = document.getElementById("span2");
 
-// Get the button that opens the createHouseholdModal
-const Btn = document.getElementById("inviteMember");
+    Btn.onclick = function() {
+        inviteMember.style.display = "block";
+    };
 
-// Get the <span> element that closes the createHouseholdModal
-const span2 = document.getElementById("span2");
-
-// When the user clicks the button, open the createHouseholdModal
-Btn.onclick = function() {
-    inviteMember.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the createHouseholdModal
-span2.onclick = function() {
-    inviteMember.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the createHouseholdModal, close it
-window.onclick = function(event) {
-    if (event.target == inviteMember) {
+    span2.onclick = function() {
         inviteMember.style.display = "none";
-    }
-}
+    };
+
+    window.onclick = function(event) {
+        if (event.target == inviteMember) {
+            inviteMember.style.display = "none";
+        }
+    };
+
+    DropdownGebruikers();
+})
 // https://www.w3schools.com/howto/howto_css_modals.asp
 
 function DropdownGebruikers() {
@@ -49,41 +46,48 @@ function DropdownGebruikers() {
         .catch(error => console.error('Error:', error));
 }
 
-document.addEventListener('DOMContentLoaded', DropdownGebruikers);
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
     const inviteForm = document.querySelector("#invite__form-create");
-    console.log(inviteForm);
-    inviteForm.addEventListener("submit", postData);
+    const inviteMember = document.querySelector("#inviteModal");
+    const responseMessage = document.querySelector(".responseMessage");
+    const progressBar = document.querySelector(".progressBar");
 
-    function postData(event) {
+    inviteForm.addEventListener("submit", function(event) {
         event.preventDefault();
+
         const selectedUser = document.querySelector("#invite__dropdown").value;
-        console.log({
-            "gebruiker": selectedUser
+        const submitBtn = event.submitter.id;
+
+        if (submitBtn === "invite__modal-button") {
+            inviteUser(selectedUser);
+            responseMessage.innerText = selectedUser + " is uitgenodigd voor uw huishouden!"
+            responseMessage.style.color = "green";
+        }
+    })
+});
+
+function inviteUser(selectedUser) {
+    fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden/invite", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            "gebruiker": selectedUser,
+        })
+    })
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error('Error posting household data:', error);
         });
 
-        fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden/invite", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                "gebruiker": selectedUser,
-            })
-        })
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error(`HTTP error! status: ${res.status}`);
-                }
-                return res.json();
-            })
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error('Error posting household data:', error);
-            });
-    }
-});
+}

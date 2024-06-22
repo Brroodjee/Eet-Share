@@ -19,6 +19,8 @@ import java.util.List;
 @Path("/login")
 public class LoginResource {
 
+    public static final SecretKey KEY = MacProvider.generateKey();
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

@@ -8,12 +8,12 @@ import javax.servlet.annotation.WebListener;
 public class Listener implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("Loading file World");
+        System.out.println("Loading file Eet-share");
         PersistenceManager.loadUsersFromFile();
     }
 
     public void contextDestroyed(ServletContextEvent sce) {
-        System.out.println("Saving world to file");
+        System.out.println("Saving Eet-share to file");
         PersistenceManager.saveUsersToFile();
     }
 }

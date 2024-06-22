@@ -43,9 +43,11 @@ function DropdownInvites() {
         .catch(error => console.error('Error:', error));
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
     const invitesForm = document.querySelector("#invite__form-accept-decline");
+    const acceptOrDeclineModal = document.querySelector("#acceptOrDeclineModal");
+    const responseMessage = document.querySelector(".responseMessage");
+    const progressBar = document.querySelector(".progressBar");
 
     invitesForm.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -54,12 +56,30 @@ document.addEventListener("DOMContentLoaded", () => {
         const submitButton = event.submitter.id;
 
         if (submitButton === "invite__modal-button-accept") {
-            acceptInvite(selectedInvite);
-        } else if (submitButton === "invite__modal-button-decline") {
-            declineInvite(selectedInvite);
-        }
 
-        acceptOrDeclineModal.style.display = "none";
+            acceptInvite(selectedInvite);
+            console.log("sluit na 5 sec")
+            responseMessage.innerText = "Uitnodiging van " + selectedInvite + " geaccepteerd, venster sluit na 5 seconden";
+            responseMessage.style.color = "green" //https://www.w3schools.com/jsref/prop_style_color.asp
+            progressBar.style.width = "100%";
+            setTimeout(() => {
+                acceptOrDeclineModal.style.display = "none";
+                location.reload()
+            }, 5000);
+
+        } else if (submitButton === "invite__modal-button-decline") {
+
+            declineInvite(selectedInvite);
+            console.log("sluit na 5 sec")
+            responseMessage.innerText = "Uitnodiging van " + selectedInvite + " geweigerd, venster sluit na 5 seconden";
+            responseMessage.style.color = "red"
+            progressBar.style.width = "100%";
+            setTimeout(() => {
+                acceptOrDeclineModal.style.display = "none";
+                location.reload(); //https://www.w3schools.com/jsref/met_loc_reload.asp
+            }, 5000);
+
+        }
     });
 });
 

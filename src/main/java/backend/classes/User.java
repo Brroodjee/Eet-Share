@@ -45,6 +45,15 @@ public class User implements Principal, Serializable {
         return this.password.equals(password);
     }
 
+    public static boolean exists(String username) {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String getRole() {
         return role;
     }

@@ -7,6 +7,7 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
+import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.io.StringReader;
@@ -17,6 +18,8 @@ import javax.json.JsonObject;
 public class HuishoudenResource extends Application {
 
     List<Huishouden> huishoudens = Huishouden.getHuishoudens();
+    List<User> users = User.getUsers();
+    List<Gebruiker> gebruikers = Gebruiker.getGebruikers();
     List<Invite> invites = Invite.getInvites();
 
     @GET
@@ -192,6 +195,7 @@ public class HuishoudenResource extends Application {
     @GET
     @Path("/invites")
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed("gebruiker")
     public String getInvite(@Context SecurityContext securityContext) {
         List<Invite> invites = Invite.getInvites();
 
@@ -202,11 +206,13 @@ public class HuishoudenResource extends Application {
 
         if (user != null && isValidUser(user)) {
             for (Invite invite : invites) {
-                JsonObjectBuilder inviteBuilder = Json.createObjectBuilder();
-                inviteBuilder.add("hoofd", invite.getHoofdInvite().getUsername());
-                inviteBuilder.add("gebruiker", invite.getGebruikerInvite().getUsername());
-                inviteBuilder.add("status", invite.getStatusInvite());
-                arrayBuilder.add(inviteBuilder);
+                if (username == invite.getGebruikerInvite().getUsername()) {
+                    JsonObjectBuilder inviteBuilder = Json.createObjectBuilder();
+                    inviteBuilder.add("hoofd", invite.getHoofdInvite().getUsername());
+                    inviteBuilder.add("gebruiker", invite.getGebruikerInvite().getUsername());
+                    inviteBuilder.add("status", invite.getStatusInvite());
+                    arrayBuilder.add(inviteBuilder);
+                }
             }
         }
         JsonArray arraybuilderHuishouden = arrayBuilder.build();

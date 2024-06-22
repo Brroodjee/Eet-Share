@@ -25,7 +25,16 @@ public class RegisterResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response register(Gebruiker user) {
         List<User> users = User.getUsers();
+
+        if (User.exists(user.getUsername())) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Gebruikersnaam is al in gebruik")
+                    .build();
+        }
+
         users.add(user);
+        List<Gebruiker> gebruikers = Gebruiker.getGebruikers();
+        gebruikers.add(user);
 
         String role = "gebruiker";
 
