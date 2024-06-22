@@ -46,8 +46,9 @@ function DropdownInvites() {
 document.addEventListener("DOMContentLoaded", () => {
     const invitesForm = document.querySelector("#invite__form-accept-decline");
     const acceptOrDeclineModal = document.querySelector("#acceptOrDeclineModal");
-    const responseMessage = document.querySelector(".responseMessage");
-    const progressBar = document.querySelector(".progressBar");
+    const responseMessage = acceptOrDeclineModal.querySelector(".responseMessage");
+    const progressBar = acceptOrDeclineModal.querySelector(".progressBar");
+    const dropdownGebruikers = document.querySelector('#invites__dropdown');
 
     invitesForm.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -56,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const submitButton = event.submitter.id;
 
         if (submitButton === "invite__modal-button-accept") {
-
             acceptInvite(selectedInvite);
             console.log("sluit na 5 sec")
             responseMessage.innerText = "Uitnodiging van " + selectedInvite + " geaccepteerd, venster sluit na 5 seconden";
@@ -66,23 +66,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 acceptOrDeclineModal.style.display = "none";
                 location.reload()
             }, 5000);
-
         } else if (submitButton === "invite__modal-button-decline") {
-
             declineInvite(selectedInvite);
             console.log("sluit na 5 sec")
             responseMessage.innerText = "Uitnodiging van " + selectedInvite + " geweigerd, venster sluit na 5 seconden";
             responseMessage.style.color = "red"
             progressBar.style.width = "100%";
-            setTimeout(() => {
-                acceptOrDeclineModal.style.display = "none";
-                location.reload(); //https://www.w3schools.com/jsref/met_loc_reload.asp
-            }, 5000);
+            if (dropdownGebruikers.length > 1) {
+                setTimeout(() => {
+                    location.reload();
+                }, 5000);
+            } else if (dropdownGebruikers.length === 1) {
+                setTimeout(() => {
+                    acceptOrDeclineModal.style.display = "none";
+                    location.reload();
+                }, 5000);
+            }
 
         }
     });
 });
-
 
 function acceptInvite(selectedInvite) {
     fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden/accept", {

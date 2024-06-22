@@ -1,5 +1,21 @@
 const token = window.sessionStorage.getItem("myJWT");
 
+document.addEventListener("DOMContentLoaded", () => {
+    const createHouseholdModal = document.getElementById("myModal");
+    const btn = document.getElementById("myBtn");
+    const span1 = document.getElementById("span1");
+
+    btn.onclick = function() {
+        createHouseholdModal.style.display = "block";
+    }
+
+    span1.onclick = function() {
+        createHouseholdModal.style.display = "none";
+    }
+
+    GetHuishoudenNaamEnLeden();
+})
+
 function GetHuishoudenNaamEnLeden() {
     console.log("Huishouden gegevens ophalen");
     fetch('https://tests-1718633149689.azurewebsites.net/eet-share/huishouden', {
@@ -54,39 +70,53 @@ function GetHuishoudenNaamEnLeden() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const createForm = document.querySelector("#huishouden__form-create");
-    console.log(createForm);
-    createForm.addEventListener("submit", postData);
+    const huishoudenNaamForm = document.querySelector("#huishouden__form-create");
+    const huishoudenNaamModal = document.querySelector("#myModal");
+    const responseMessageHuishouden = document.querySelector(".responseMessage");
+    const progressBarHuishouden = document.querySelector(".progressBar");
 
-    function postData(event) {
+    huishoudenNaamForm.addEventListener("submit", function(event) {
         event.preventDefault();
-        console.log({
-            "huishoudenNaam": document.querySelector("#huishouden__modal-naam").value,
-        });
 
-        fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden/aanmaken", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                "huishoudenNaam": document.querySelector("#huishouden__modal-naam").value,
-            })
+        const huishoudenNaam = document.querySelector("#huishouden__modal-naam").value;
+        const submitterButton = event.submitter.id;
+
+        if (submitterButton === "huishouden__modal-button") {
+
+            createHousehold(huishoudenNaam);
+            console.log("sluit na 5 sec")
+            responseMessageHuishouden.innerText = "huishouden " + huishoudenNaam + " aangemaakt!";
+            responseMessageHuishouden.style.color = "green" //https://www.w3schools.com/jsref/prop_style_color.asp
+            progressBarHuishouden.style.width = "100%";
+            setTimeout(() => {
+                huishoudenNaamModal.style.display = "none";
+                location.reload()
+            }, 5000);
+        }
+    })
+})
+
+function createHousehold(huishoudenNaam) {
+    fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden/aanmaken", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            "huishoudenNaam": huishoudenNaam,
         })
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error(`HTTP error! status: ${res.status}`);
-                }
-                return res.json();
-            })
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error('Error posting household data:', error);
-            });
-    }
-});
-
-window.onload = GetHuishoudenNaamEnLeden;
+    })
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error('Error posting household data:', error);
+        });
+}

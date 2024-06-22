@@ -169,30 +169,6 @@ public class HuishoudenResource extends Application {
     }
 
     @GET
-    @Path("/kijken")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getHuishouden() {
-        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-
-        for (Huishouden huishouden : huishoudens) {
-            JsonObjectBuilder huishoudenBuilder = Json.createObjectBuilder();
-            huishoudenBuilder.add("Hoofd", huishouden.getHoofd().toJson());
-            huishoudenBuilder.add("huishoudenNaam", huishouden.getHuishoudenNaam());
-
-            JsonArrayBuilder ledenArrayBuilder = Json.createArrayBuilder();
-            for (Lid lid : huishouden.getLeden()) {
-                ledenArrayBuilder.add(lid.toJson());
-            }
-            huishoudenBuilder.add("leden", ledenArrayBuilder);
-
-            arrayBuilder.add(huishoudenBuilder);
-        }
-
-        JsonArray arraybuilderHuishouden = arrayBuilder.build();
-        return arraybuilderHuishouden.toString();
-    }
-
-    @GET
     @Path("/invites")
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed("gebruiker")
@@ -206,7 +182,7 @@ public class HuishoudenResource extends Application {
 
         if (user != null && isValidUser(user)) {
             for (Invite invite : invites) {
-                if (username == invite.getGebruikerInvite().getUsername()) {
+                if (username.equals(invite.getGebruikerInvite().getUsername()) && invite.getStatusInvite().equals("pending")) {
                     JsonObjectBuilder inviteBuilder = Json.createObjectBuilder();
                     inviteBuilder.add("hoofd", invite.getHoofdInvite().getUsername());
                     inviteBuilder.add("gebruiker", invite.getGebruikerInvite().getUsername());

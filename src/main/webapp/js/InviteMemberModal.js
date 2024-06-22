@@ -18,8 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     DropdownGebruikers();
-})
-// https://www.w3schools.com/howto/howto_css_modals.asp
+});
 
 function DropdownGebruikers() {
     console.log("DropdownGebruikers() function called");
@@ -49,8 +48,8 @@ function DropdownGebruikers() {
 document.addEventListener('DOMContentLoaded', () => {
     const inviteForm = document.querySelector("#invite__form-create");
     const inviteMember = document.querySelector("#inviteModal");
-    const responseMessage = document.querySelector(".responseMessage");
-    const progressBar = document.querySelector(".progressBar");
+    const responseMessageInvite = inviteMember.querySelector(".responseMessage");
+    const progressBarInvite = inviteMember.querySelector(".progressBar");
 
     inviteForm.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -60,8 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (submitBtn === "invite__modal-button") {
             inviteUser(selectedUser);
-            responseMessage.innerText = selectedUser + " is uitgenodigd voor uw huishouden!"
-            responseMessage.style.color = "green";
+            responseMessageInvite.innerText = selectedUser + " is uitgenodigd voor uw huishouden!"
+            responseMessageInvite.style.color = "green";
+            progressBarInvite.style.width = "100%";
+            setTimeout(() => {
+                location.reload()
+            }, 5000);
         }
     })
 });
@@ -89,5 +92,4 @@ function inviteUser(selectedUser) {
         .catch((error) => {
             console.error('Error posting household data:', error);
         });
-
 }

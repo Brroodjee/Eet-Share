@@ -2,6 +2,7 @@ package backend.dataopslag;
 
 import backend.classes.*;
 
+import javax.ws.rs.GET;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,7 +11,7 @@ import java.util.List;
 public class PersistenceManager {
 
     public static void loadUsersFromFile() {
-        Path userStorage = Path.of("/home/eetshare.obj");
+        Path userStorage = Path.of("/home/userdata.obj");
 
         try {
             InputStream is = Files.newInputStream(userStorage);
@@ -40,6 +41,18 @@ public class PersistenceManager {
             List<Favorietenlijstje> loadedFavorietenlijstjes = (List<Favorietenlijstje>) ois.readObject();
             Favorietenlijstje.setFavorietenlijstjes(loadedFavorietenlijstjes);
 
+            List<Gebruiker> loadedGebruikers = (List<Gebruiker>) ois.readObject();
+            Gebruiker.setGebruikers(loadedGebruikers);
+
+            List<Hoofd> loadedHoofden = (List<Hoofd>) ois.readObject();
+            Hoofd.setHoofden(loadedHoofden);
+
+            List<Lid> loadedLid = (List<Lid>) ois.readObject();
+            Lid.setLeden(loadedLid);
+
+            List<Invite> loadedInvites = (List<Invite>) ois.readObject();
+            Invite.setInvites(loadedInvites);
+
             ois.close();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -61,7 +74,11 @@ public class PersistenceManager {
             List<Kookboek> saveToKookboeken = Kookboek.getKookboeken();
             List<Boodschappenlijstje> saveToBoodschappenlijstjes = Boodschappenlijstje.getBoodschappenlijstjes();
             List<Favorietenlijstje> saveToFavorietenlijstjes = Favorietenlijstje.getFavorietenlijstjes();
-            Path userStorage = Path.of("/home/eetshare.obj");
+            List<Gebruiker> saveToGebruikers = Gebruiker.getGebruikers();
+            List<Hoofd> saveToHoofd = Hoofd.getHoofden();
+            List<Lid> saveToLid = Lid.getLeden();
+            List<Invite> saveToInvites = Invite.getInvites();
+            Path userStorage = Path.of("/home/userdata.obj");
 
             OutputStream os = Files.newOutputStream(userStorage);
             ObjectOutputStream oos = new ObjectOutputStream(os);
@@ -74,6 +91,10 @@ public class PersistenceManager {
             oos.writeObject(saveToKookboeken);
             oos.writeObject(saveToBoodschappenlijstjes);
             oos.writeObject(saveToFavorietenlijstjes);
+            oos.writeObject(saveToGebruikers);
+            oos.writeObject(saveToHoofd);
+            oos.writeObject(saveToLid);
+            oos.writeObject(saveToInvites);
             os.close();
             oos.close();
         } catch (IOException e) {
