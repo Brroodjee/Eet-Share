@@ -12,8 +12,7 @@
     <a href="#">Boodschappenlijst</a>
     <a href="Huishouden.html">Huishouden</a>
     <a href="">Kookboek</a>
-    <br>
-    <br>
+    <br><br>
     <a href="Favorietenlijstje.html">Favorietenlijstje</a>
 </div>
 <div class="lijst__div">
@@ -24,151 +23,194 @@
         <table class="lijst__table-vleeswaren">
             <tr>
                 <th>product</th>
+                <th>remove</th>
             </tr>
             <tr>
                 <td>
-                    <select class="lijst__dropdown-vleeswaren" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                    <select class="lijst__dropdown-vleeswaren" name="product">
                         <option>Selecteer product</option>
                     </select>
+                </td>
+                <td>
+                    <button type="button" name="remove" class="removeButton">x</button>
                 </td>
             </tr>
         </table>
     </div>
     <div class="zuivel">
-        <h3>zuivel</h3>
+        <h3>Zuivel</h3>
         <button class="lijst__addRowButton-zuivel">voeg producten toe</button>
         <table class="lijst__table-zuivel">
             <tr>
                 <th>product</th>
+                <th>remove</th>
             </tr>
             <tr>
                 <td>
-                    <select class="lijst__dropdown-zuivel" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                    <select class="lijst__dropdown-zuivel" name="product">
                         <option>Selecteer product</option>
                     </select>
+                </td>
+                <td>
+                    <button type="button" name="remove" class="removeButton">x</button>
                 </td>
             </tr>
         </table>
     </div>
     <div class="groente-en-fruit">
-        <h3>groente en fruit</h3>
+        <h3>Groente en Fruit</h3>
         <button class="lijst__addRowButton-groente">voeg producten toe</button>
         <table class="lijst__table-groente_en_fruit">
             <tr>
                 <th>product</th>
+                <th>remove</th>
             </tr>
             <tr>
                 <td>
-                    <select class="lijst__dropdown-groente_en_fruit" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                    <select class="lijst__dropdown-groente_en_fruit" name="product">
                         <option>Selecteer product</option>
                     </select>
+                </td>
+                <td>
+                    <button type="button" name="remove" class="removeButton">x</button>
                 </td>
             </tr>
         </table>
     </div>
     <div class="dranken">
-        <h3>dranken</h3>
+        <h3>Dranken</h3>
         <button class="lijst__addRowButton-dranken">voeg producten toe</button>
         <table class="lijst__table-drank">
             <tr>
                 <th>product</th>
+                <th>remove</th>
             </tr>
             <tr>
                 <td>
-                    <select class="lijst__dropdown-drank" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                    <select class="lijst__dropdown-drank" name="product">
                         <option>Selecteer product</option>
                     </select>
+                </td>
+                <td>
+                    <button type="button" name="remove" class="removeButton">x</button>
                 </td>
             </tr>
         </table>
     </div>
     <div class="koek-en-snoep">
-        <h3>koek en snoep</h3>
+        <h3>Koek en Snoep</h3>
         <button class="lijst__addRowButton-koek">voeg producten toe</button>
         <table class="lijst__table-koek_en_snoep">
             <tr>
                 <th>product</th>
+                <th>remove</th>
             </tr>
             <tr>
                 <td>
-                    <select class="lijst__dropdown-koek_en_snoep" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                    <select class="lijst__dropdown-koek_en_snoep" name="product">
                         <option>Selecteer product</option>
                     </select>
+                </td>
+                <td>
+                    <button type="button" name="remove" class="removeButton">x</button>
                 </td>
             </tr>
         </table>
     </div>
     <div class="overige">
-        <h3>overige</h3>
+        <h3>Overige</h3>
         <button class="lijst__addRowButton-overige">voeg producten toe</button>
         <table class="lijst__table-overige">
             <tr>
                 <th>product</th>
+                <th>remove</th>
             </tr>
             <tr>
                 <td>
-                    <select class="lijst__dropdown-overige" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                    <select class="lijst__dropdown-overige" name="product">
                         <option>Selecteer product</option>
                     </select>
+                </td>
+                <td>
+                    <button type="button" name="remove" class="removeButton">x</button>
                 </td>
             </tr>
         </table>
     </div>
+    <button id="getValuesButton">Get Values</button>
 </div>
 <template class="lijst__table-template-vleeswaren">
     <tr>
         <td>
-            <select class="lijst__dropdown-vleeswaren" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+            <select class="lijst__dropdown-vleeswaren" name="product">
                 <option>Selecteer product</option>
             </select>
+        </td>
+        <td>
+            <button type="button" name="remove" class="removeButton">x</button>
         </td>
     </tr>
 </template>
 <template class="lijst__table-template-zuivel">
     <tr>
         <td>
-            <select class="lijst__dropdown-zuivel" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+            <select class="lijst__dropdown-zuivel" name="product">
                 <option>Selecteer product</option>
             </select>
+        </td>
+        <td>
+            <button type="button" name="remove" class="removeButton">x</button>
         </td>
     </tr>
 </template>
 <template class="lijst__table-template-groente">
     <tr>
         <td>
-            <select class="lijst__dropdown-groente_en_fruit" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+            <select class="lijst__dropdown-groente_en_fruit" name="product">
                 <option>Selecteer product</option>
             </select>
+        </td>
+        <td>
+            <button type="button" name="remove" class="removeButton">x</button>
         </td>
     </tr>
 </template>
 <template class="lijst__table-template-dranken">
     <tr>
         <td>
-            <select class="lijst__dropdown-drank" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+            <select class="lijst__dropdown-drank" name="product">
                 <option>Selecteer product</option>
             </select>
+        </td>
+        <td>
+            <button type="button" name="remove" class="removeButton">x</button>
         </td>
     </tr>
 </template>
 <template class="lijst__table-template-koek">
     <tr>
         <td>
-            <select class="lijst__dropdown-koek_en_snoep" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+            <select class="lijst__dropdown-koek_en_snoep" name="product">
                 <option>Selecteer product</option>
             </select>
+        </td>
+        <td>
+            <button type="button" name="remove" class="removeButton">x</button>
         </td>
     </tr>
 </template>
 <template class="lijst__table-template-overige">
     <tr>
         <td>
-            <select class="lijst__dropdown-overige" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+            <select class="lijst__dropdown-overige" name="product">
                 <option>Selecteer product</option>
             </select>
         </td>
+        <td>
+            <button type="button" name="remove" class="removeButton">x</button>
+        </td>
     </tr>
 </template>
-<script src="../js/lijst.js"></script>
+<script src="../js/FavorietenLijstje.js"></script>
 </body>
 </html>

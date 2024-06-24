@@ -1,7 +1,6 @@
 package backend.classes;
 
 import javax.json.Json;
-import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import java.io.Serializable;
@@ -11,18 +10,16 @@ import java.util.List;
 public class Huishouden implements Serializable {
     private String huishoudenNaam;
     private Hoofd hoofd;
-
-    private ArrayList<Lid> leden;
-    private ArrayList<Product> producten;
+    private List<Lid> leden;
+    private Boodschappenlijstje boodschappenlijstje; // Changed to single instance
 
     private static List<Huishouden> huishoudens = new ArrayList<>();
-
 
     public Huishouden(String huishoudenNaam, Hoofd hoofd) {
         this.huishoudenNaam = huishoudenNaam;
         this.hoofd = hoofd;
         this.leden = new ArrayList<>();
-        this.producten = new ArrayList<>();
+        this.boodschappenlijstje = new Boodschappenlijstje(this);
     }
 
     public String getHuishoudenNaam() {
@@ -53,16 +50,8 @@ public class Huishouden implements Serializable {
         this.leden.remove(lid);
     }
 
-    public List<Product> getProducten() {
-        return producten;
-    }
-
-    public void addProduct(Product product) {
-        this.producten.add(product);
-    }
-
-    public void removeProduct(Product product) {
-        this.producten.remove(product);
+    public Boodschappenlijstje getBoodschappenlijstje() {
+        return boodschappenlijstje;
     }
 
     public static List<Huishouden> getHuishoudens() {
@@ -73,10 +62,14 @@ public class Huishouden implements Serializable {
         Huishouden.huishoudens = huishoudens;
     }
 
+    public void setBoodschappenlijstje(Boodschappenlijstje boodschappenlijstje) {
+        this.boodschappenlijstje = boodschappenlijstje;
+    }
+
     public JsonObject toJson() {
         JsonObjectBuilder huishoudenBuilder = Json.createObjectBuilder();
         huishoudenBuilder.add("huishoudenNaam", this.huishoudenNaam);
+        huishoudenBuilder.add("boodschappenlijstje", this.boodschappenlijstje.toJson());
         return huishoudenBuilder.build();
     }
-
 }

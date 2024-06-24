@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Favorietenlijstje implements Serializable {
-    private int userID;
+    private User user;
     private ArrayList<Product> producten;
     private static List<Favorietenlijstje> favorietenlijstjes = new ArrayList<>();
 
-    public Favorietenlijstje(int userID) {
-        this.userID = userID;
+    public Favorietenlijstje(User user) {
+        this.user = user;
     }
 
     public ArrayList<Product> getProducten() {
@@ -21,8 +21,12 @@ public class Favorietenlijstje implements Serializable {
         this.producten = producten;
     }
 
-    public int getUserID() {
-        return userID;
+    public User getUserFavorietenlijstje() {
+        return user;
+    }
+
+    public void setUserFavorietenlijstje(User user) {
+        this.user = user;
     }
 
     public static List<Favorietenlijstje> getFavorietenlijstjes() {

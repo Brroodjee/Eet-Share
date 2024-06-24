@@ -1,13 +1,13 @@
 package backend.webservices;
 
 import backend.classes.*;
+import backend.webservices.UserUtils;
 
 import javax.annotation.security.RolesAllowed;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.io.StringReader;
@@ -27,9 +27,9 @@ public class HuishoudenResource extends Application {
     public String getHuishouden(@Context SecurityContext securityContext) {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
         String username = securityContext.getUserPrincipal().getName();
-        User user = getUserByUsername(username);
+        User user = UserUtils.getUserByUsername(username);
 
-        if (user != null && isValidUser(user)) {
+        if (user != null && UserUtils.isValidUser(user)) {
             for (Huishouden huishouden : huishoudens) {
                 boolean isInHuishouden = false;
                 if (huishouden.getHoofd() != null && huishouden.getHoofd().getUsername().equals(username)) {
@@ -69,38 +69,29 @@ public class HuishoudenResource extends Application {
     @RolesAllowed("gebruiker")
     public Response addHuishouden(@Context SecurityContext securityContext, String jsonBody) {
         String username = securityContext.getUserPrincipal().getName();
-        Gebruiker gebruiker = (Gebruiker) getUserByUsername(username);
+        Gebruiker gebruiker = (Gebruiker) UserUtils.getGebruikerByUsername(username);
 
-        if (gebruiker != null && isValidUser(gebruiker)) {
+        if (gebruiker != null && UserUtils.isValidUser(gebruiker)) {
             JsonObject jsonObject = Json.createReader(new StringReader(jsonBody)).readObject();
             String huishoudenNaam = jsonObject.getString("huishoudenNaam");
 
             gebruiker.createHousehold(huishoudenNaam); // Roep de createHousehold methode aan
+            Huishouden nieuwHuishouden = Huishouden.getHuishoudens().stream()
+                    .filter(h -> h.getHuishoudenNaam().equals(huishoudenNaam))
+                    .findFirst()
+                    .orElse(null);
+
+            if (nieuwHuishouden != null) {
+                Boodschappenlijstje boodschappenlijstje = new Boodschappenlijstje(nieuwHuishouden);
+                nieuwHuishouden.setBoodschappenlijstje(boodschappenlijstje);
+            }
+
             JsonObjectBuilder responseObject = Json.createObjectBuilder();
             responseObject.add("Huishouden toegevoegd", huishoudenNaam);
 
             return Response.ok(responseObject.build()).build();
         }
         return Response.status(Response.Status.UNAUTHORIZED).build();
-    }
-
-    @GET
-    @Path("/gebruikers")
-    @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed("hoofd")
-    public Response getGebruikers(@Context SecurityContext securityContext) {
-        List<Gebruiker> gebruikers = Gebruiker.getGebruikers();
-        return Response.ok(gebruikers).build();
-    }
-
-    private boolean isValidUser(User user) {
-        List<User> users = User.getUsers();
-        for (User storedUser : users) {
-            if (storedUser.getUsername().equals(user.getUsername()) && storedUser.getPassword().equals(user.getPassword())) {
-                return true;
-            }
-        }
-        return false;
     }
 
     @POST
@@ -110,13 +101,13 @@ public class HuishoudenResource extends Application {
     @RolesAllowed("hoofd")
     public Response invite(@Context SecurityContext securityContext, String jsonBody) {
         String hoofdUsername = securityContext.getUserPrincipal().getName();
-        Hoofd hoofd = getHoofdByUsername(hoofdUsername);
+        Hoofd hoofd = UserUtils.getHoofdByUsername(hoofdUsername);
 
-        if (hoofd != null && isValidUser(hoofd)) {
+        if (hoofd != null && UserUtils.isValidUser(hoofd)) {
             JsonObject jsonObject = Json.createReader(new StringReader(jsonBody)).readObject();
             String gebruikerUsername = jsonObject.getString("gebruiker");
 
-            Gebruiker gebruiker = getGebruikerByUsername(gebruikerUsername);
+            Gebruiker gebruiker = UserUtils.getGebruikerByUsername(gebruikerUsername);
 
             if (gebruiker != null) {
 
@@ -138,36 +129,6 @@ public class HuishoudenResource extends Application {
         return Response.status(Response.Status.UNAUTHORIZED).build();
     }
 
-    private User getUserByUsername(String username) {
-        List<User> users = User.getUsers();
-        for (User user : users) {
-            if (user.getUsername().equals(username)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    private Hoofd getHoofdByUsername(String username) {
-        List<Hoofd> hoofden = Hoofd.getHoofden();
-        for (Hoofd hoofd : hoofden) {
-            if (hoofd.getUsername().equals(username)) {
-                return hoofd;
-            }
-        }
-        return null;
-    }
-
-    private Gebruiker getGebruikerByUsername(String username) {
-        List<Gebruiker> gebruikers = Gebruiker.getGebruikers();
-        for (Gebruiker gebruiker : gebruikers) {
-            if (gebruiker.getUsername().equals(username)) {
-                return gebruiker;
-            }
-        }
-        return null;
-    }
-
     @GET
     @Path("/invites")
     @Produces(MediaType.APPLICATION_JSON)
@@ -178,9 +139,9 @@ public class HuishoudenResource extends Application {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 
         String username = securityContext.getUserPrincipal().getName();
-        User user = getUserByUsername(username);
+        User user = UserUtils.getUserByUsername(username);
 
-        if (user != null && isValidUser(user)) {
+        if (user != null && UserUtils.isValidUser(user)) {
             for (Invite invite : invites) {
                 if (username.equals(invite.getGebruikerInvite().getUsername()) && invite.getStatusInvite().equals("pending")) {
                     JsonObjectBuilder inviteBuilder = Json.createObjectBuilder();
@@ -202,15 +163,15 @@ public class HuishoudenResource extends Application {
     @Produces(MediaType.APPLICATION_JSON)
     public Response acceptInvitation(String jsonBody, @Context SecurityContext securityContext) {
         String username = securityContext.getUserPrincipal().getName();
-        Gebruiker gebruiker = (Gebruiker) getUserByUsername(username);
+        Gebruiker gebruiker = (Gebruiker) UserUtils.getGebruikerByUsername(username);
 
-        if (gebruiker != null && isValidUser(gebruiker)) {
+        if (gebruiker != null && UserUtils.isValidUser(gebruiker)) {
             try {
                 JsonObject jsonObject = Json.createReader(new StringReader(jsonBody)).readObject();
                 String hoofdUsername = jsonObject.getString("gebruiker");
                 System.out.println("Hoofd username from request: " + hoofdUsername);
 
-                Hoofd hoofd = getHoofdByUsername(hoofdUsername);
+                Hoofd hoofd = UserUtils.getHoofdByUsername(hoofdUsername);
                 if (hoofd == null) {
                     System.out.println("Hoofd not found for username: " + hoofdUsername);
                     return Response.status(Response.Status.NOT_FOUND).entity("Hoofd not found").build();
@@ -253,15 +214,15 @@ public class HuishoudenResource extends Application {
     @Produces(MediaType.APPLICATION_JSON)
     public Response declineInvitation(String jsonBody, @Context SecurityContext securityContext) {
         String username = securityContext.getUserPrincipal().getName();
-        Gebruiker gebruiker = (Gebruiker) getUserByUsername(username);
+        Gebruiker gebruiker = (Gebruiker) UserUtils.getGebruikerByUsername(username);
 
-        if (gebruiker != null && isValidUser(gebruiker)) {
+        if (gebruiker != null && UserUtils.isValidUser(gebruiker)) {
             try {
                 JsonObject jsonObject = Json.createReader(new StringReader(jsonBody)).readObject();
                 String hoofdUsername = jsonObject.getString("gebruiker");
                 System.out.println("Hoofd username from request: " + hoofdUsername);
 
-                Hoofd hoofd = getHoofdByUsername(hoofdUsername);
+                Hoofd hoofd = UserUtils.getHoofdByUsername(hoofdUsername);
                 if (hoofd == null) {
                     System.out.println("Hoofd not found for username: " + hoofdUsername);
                     return Response.status(Response.Status.NOT_FOUND).entity("Hoofd not found").build();
