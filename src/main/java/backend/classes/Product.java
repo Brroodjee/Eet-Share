@@ -110,12 +110,39 @@ public class Product implements Serializable {
         Product.producten = producten;
     }
 
+    public String getCategory() {
+        if (this.isVleeswaren) {
+            return "vleeswaren";
+        } else if (this.isDrank) {
+            return "dranken";
+        } else if (this.isZuivel) {
+            return "zuivel";
+        } else if (this.isGroente || this.isFruit) {
+            return "groente_en_fruit";
+        } else if (this.isKoek || this.isSnoep) {
+            return "koek_en_snoep";
+        } else if (this.isOverige) {
+            return "overige";
+        } else {
+            return "overige";
+        }
+    }
+
     public JsonObject toJson() {
         JsonObjectBuilder productBuilder = Json.createObjectBuilder();
         productBuilder.add("productID", this.productID);
         productBuilder.add("beschrijving", this.beschrijving);
         productBuilder.add("productNaam", this.productNaam);
         productBuilder.add("winkel", this.winkel.getWinkelNaam());
+        productBuilder.add("isVleeswaren", this.isVleeswaren);
+        productBuilder.add("isDrank", this.isDrank);
+        productBuilder.add("isZuivel", this.isZuivel);
+        productBuilder.add("isGroente", this.isGroente);
+        productBuilder.add("isFruit", this.isFruit);
+        productBuilder.add("isKoek", this.isKoek);
+        productBuilder.add("isSnoep", this.isSnoep);
+        productBuilder.add("isOverige", this.isOverige);
+
         return productBuilder.build();
     }
 

@@ -40,11 +40,6 @@ public class Gebruiker extends User {
         Huishouden nieuwHuishouden = new Huishouden(householdName, nieuweHoofd);
         Huishouden.getHuishoudens().add(nieuwHuishouden);
 
-        Boodschappenlijstje nieuwBoodschappenlijstje = new Boodschappenlijstje(nieuwHuishouden);
-        Boodschappenlijstje.getBoodschappenlijstjes().add(nieuwBoodschappenlijstje);
-
-        nieuwHuishouden.setBoodschappenlijstje(nieuwBoodschappenlijstje); // Koppel het boodschappenlijstje aan het huishouden
-
         List<User> users = User.getUsers();
         users.remove(this);
         gebruikers.remove(this);

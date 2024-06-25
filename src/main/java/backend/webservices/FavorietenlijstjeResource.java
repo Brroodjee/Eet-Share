@@ -69,7 +69,7 @@ public class FavorietenlijstjeResource {
 
             if (userFavorietenlijstje == null) {
                 userFavorietenlijstje = new Favorietenlijstje(user);
-                userFavorietenlijstje.setProducten(new ArrayList<>()); // Initialize producten lijst
+                userFavorietenlijstje.setProducten(new ArrayList<>());
                 favorietenlijstjes.add(userFavorietenlijstje);
                 System.out.println("hier");
             }

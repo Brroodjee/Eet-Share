@@ -11,7 +11,7 @@ public class Huishouden implements Serializable {
     private String huishoudenNaam;
     private Hoofd hoofd;
     private List<Lid> leden;
-    private Boodschappenlijstje boodschappenlijstje; // Changed to single instance
+    private Boodschappenlijstje boodschappenlijstje;
 
     private static List<Huishouden> huishoudens = new ArrayList<>();
 
@@ -19,7 +19,6 @@ public class Huishouden implements Serializable {
         this.huishoudenNaam = huishoudenNaam;
         this.hoofd = hoofd;
         this.leden = new ArrayList<>();
-        this.boodschappenlijstje = new Boodschappenlijstje(this);
     }
 
     public String getHuishoudenNaam() {
@@ -50,20 +49,12 @@ public class Huishouden implements Serializable {
         this.leden.remove(lid);
     }
 
-    public Boodschappenlijstje getBoodschappenlijstje() {
-        return boodschappenlijstje;
-    }
-
     public static List<Huishouden> getHuishoudens() {
         return huishoudens;
     }
 
     public static void setHuishoudens(List<Huishouden> huishoudens) {
         Huishouden.huishoudens = huishoudens;
-    }
-
-    public void setBoodschappenlijstje(Boodschappenlijstje boodschappenlijstje) {
-        this.boodschappenlijstje = boodschappenlijstje;
     }
 
     public JsonObject toJson() {

@@ -16,6 +16,7 @@ public class Boodschappenlijstje implements Serializable {
     public Boodschappenlijstje(Huishouden huishouden) {
         this.huishouden = huishouden;
         this.producten = new ArrayList<>();
+        boodschappenlijstjes.add(this); // Zorg ervoor dat het nieuwe lijstje wordt toegevoegd aan de statische lijst
     }
 
     public Huishouden getHuishouden() {
@@ -36,6 +37,16 @@ public class Boodschappenlijstje implements Serializable {
 
     public static void setBoodschappenlijstjes(List<Boodschappenlijstje> boodschappenlijstjes) {
         Boodschappenlijstje.boodschappenlijstjes = boodschappenlijstjes;
+    }
+
+    public void addProduct(Product product, int quantity) {
+        for (ProductQuantity pq : producten) {
+            if (pq.getProduct().equals(product)) {
+                pq.setQuantity(pq.getQuantity() + quantity);
+                return;
+            }
+        }
+        producten.add(new ProductQuantity(product, quantity));
     }
 
     public JsonObject toJson() {

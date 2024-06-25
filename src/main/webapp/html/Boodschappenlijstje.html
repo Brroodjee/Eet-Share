@@ -1,228 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Boodschappenlijstje</title>
-        <link rel="stylesheet" href="../css/style.css">
-    </head>
-    <body class="lijst__body">
-        <div id="boodschappenlijstje__menu">
-            <h1>Menu</h1>
-            <a href="homepage.html">Homepage</a>
-            <a href="#">Boodschappenlijst</a>
-            <a href="Huishouden.html">Huishouden</a>
-            <a href="">Kookboek</a>
-            <br>
-            <br>
-            <a href="Favorietenlijstje.html">Favorietenlijstje</a>
-        </div>
-        <div class="lijst__div">
-            <h1>Boodschappenlijstje</h1>
-            <div class="vleeswaren">
-                <h3>Vleeswaren</h3>
-                <button class="lijst__addRowButton-vleeswaren">voeg producten toe</button>
-                <table class="lijst__table-vleeswaren">
-                    <tr>
-                        <th>qty</th>
-                        <th>product</th>
-                        <th>check</th>
-                        <th>remove</th>
-                    </tr>
-                    <tr>
-                        <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-                        <td>
-                            <select class="lijst__dropdown-vleeswaren" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                                <option>Selecteer product</option>
-                            </select>
-                        </td>
-                        <td><input type="checkbox" class="lijst__checkbox"/></td>
-                        <td><button type="button" name="remove" class="removeButton">x</button></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="zuivel">
-                <h3>zuivel</h3>
-                <button class="lijst__addRowButton-zuivel">voeg producten toe</button>
-                <table class="lijst__table-zuivel">
-                    <tr>
-                        <th>qty</th>
-                        <th>product</th>
-                        <th>check</th>
-                        <th>remove</th>
-                    </tr>
-                    <tr>
-                        <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-                        <td>
-                            <select class="lijst__dropdown-zuivel" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                                <option>Selecteer product</option>
-                            </select>
-                        </td>
-                        <td><input type="checkbox" class="lijst__checkbox"/></td>
-                        <td><button type="button" name="remove" class="removeButton">x</button></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="groente-en-fruit">
-                <h3>groente en fruit</h3>
-                <button class="lijst__addRowButton-groente">voeg producten toe</button>
-                <table class="lijst__table-groente_en_fruit">
-                    <tr>
-                        <th>qty</th>
-                        <th>product</th>
-                        <th>check</th>
-                        <th>remove</th>
-                    </tr>
-                    <tr>
-                        <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-                        <td>
-                            <select class="lijst__dropdown-groente_en_fruit" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                                <option>Selecteer product</option>
-                            </select>
-                        </td>
-                        <td><input type="checkbox" class="lijst__checkbox"/></td>
-                        <td><button type="button" name="remove" class="removeButton">x</button></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="dranken">
-                <h3>dranken</h3>
-                <button class="lijst__addRowButton-dranken">voeg producten toe</button>
-                <table class="lijst__table-drank">
-                    <tr>
-                        <th>qty</th>
-                        <th>product</th>
-                        <th>check</th>
-                        <th>remove</th>
-                    </tr>
-                    <tr>
-                        <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-                        <td>
-                            <select class="lijst__dropdown-drank" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                                <option>Selecteer product</option>
-                            </select>
-                        </td>
-                        <td><input type="checkbox" class="lijst__checkbox"/></td>
-                        <td><button type="button" name="remove" class="removeButton">x</button></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="koek-en-snoep">
-                <h3>koek en snoep</h3>
-                <button class="lijst__addRowButton-koek">voeg producten toe</button>
-                <table class="lijst__table-koek_en_snoep">
-                    <tr>
-                        <th>qty</th>
-                        <th>product</th>
-                        <th>check</th>
-                        <th>remove</th>
-                    </tr>
-                    <tr>
-                        <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-                        <td>
-                            <select class="lijst__dropdown-koek_en_snoep" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                                <option>Selecteer product</option>
-                            </select>
-                        </td>
-                        <td><input type="checkbox" class="lijst__checkbox"/></td>
-                        <td><button type="button" name="remove" class="removeButton">x</button></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="overige">
-                <h3>overige</h3>
-                <button class="lijst__addRowButton-overige">voeg producten toe</button>
-                <table class="lijst__table-overige">
-                    <tr>
-                        <th>qty</th>
-                        <th>product</th>
-                        <th>check</th>
-                        <th>remove</th>
-                    </tr>
-                    <tr>
-                        <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-                        <td>
-                            <select class="lijst__dropdown-overige" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                                <option>Selecteer product</option>
-                            </select>
-                        </td>
-                        <td><input type="checkbox" class="lijst__checkbox"/></td>
-                        <td><button type="button" name="remove" class="removeButton">x</button></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    <template class="lijst__table-template-vleeswaren">
-        <tr>
-            <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-            <td>
-                <select class="lijst__dropdown-vleeswaren" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                    <option>Selecteer product</option>
-                </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox"/></td>
-            <td><button type="button" name="remove" class="removeButton">x</button></td>
-        </tr>
-    </template>
-    <template class="lijst__table-template-zuivel">
-        <tr>
-            <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-            <td>
-                <select class="lijst__dropdown-zuivel" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                    <option>Selecteer product</option>
-                </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox"/></td>
-            <td><button type="button" name="remove" class="removeButton">x</button></td>
-        </tr>
-    </template>
-    <template class="lijst__table-template-groente">
-        <tr>
-            <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-            <td>
-                <select class="lijst__dropdown-groente_en_fruit" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                    <option>Selecteer product</option>
-                </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox"/></td>
-            <td><button type="button" name="remove" class="removeButton">x</button></td>
-        </tr>
-    </template>
-    <template class="lijst__table-template-dranken">
-        <tr>
-            <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-            <td>
-                <select class="lijst__dropdown-drank" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                    <option>Selecteer product</option>
-                </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox"/></td>
-            <td><button type="button" name="remove" class="removeButton">x</button></td>
-        </tr>
-    </template>
-    <template class="lijst__table-template-koek">
-        <tr>
-            <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-            <td>
-                <select class="lijst__dropdown-koek_en_snoep" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                    <option>Selecteer product</option>
-                </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox"/></td>
-            <td><button type="button" name="remove" class="removeButton">x</button></td>
-        </tr>
-    </template>
-    <template class="lijst__table-template-overige">
-        <tr>
-            <td><input type="number"  class="lijst__input-number" placeholder="1"/></td>
-            <td>
-                <select class="lijst__dropdown-overige" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                    <option>Selecteer product</option>
-                </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox"/></td>
-            <td><button type="button" name="remove" class="removeButton">x</button></td>
-        </tr>
-    </template>
-        <script src="../js/lijst.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Boodschappenlijstje</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="lijst__body">
+<div id="boodschappenlijstje__menu">
+    <h1>Menu</h1>
+    <a href="homepage.html">Homepage</a>
+    <a href="#">Boodschappenlijst</a>
+    <a href="Huishouden.html">Huishouden</a>
+    <a href="">Kookboek</a>
+    <br>
+    <br>
+    <a href="Favorietenlijstje.html">Favorietenlijstje</a>
+</div>
+<div class="lijst__div">
+    <h1>Boodschappenlijstje</h1>
+    <div class="vleeswaren">
+        <h3>Vleeswaren</h3>
+        <button class="lijst__addRowButton-vleeswaren">voeg producten toe</button>
+        <table class="lijst__table-vleeswaren">
+            <tr>
+                <th>qty</th>
+                <th>product</th>
+                <th>confirm</th>
+                <th>remove</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number"  class="lijst__input-number" placeholder="1"/>
+                </td>
+                <td>
+                    <select class="lijst__dropdown-vleeswaren" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+                <td><input type="checkbox" class="lijst__checkbox"/></td>
+                <td><button type="button" name="remove" class="removeButton">x</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="zuivel">
+        <h3>zuivel</h3>
+        <button class="lijst__addRowButton-zuivel">voeg producten toe</button>
+        <table class="lijst__table-zuivel">
+            <tr>
+                <th>qty</th>
+                <th>product</th>
+                <th>check</th>
+                <th>remove</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number"  class="lijst__input-number" placeholder="1"/>
+                </td>
+                <td>
+                    <select class="lijst__dropdown-zuivel" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+                <td><input type="checkbox" class="lijst__checkbox"/></td>
+                <td><button type="button" name="remove" class="removeButton">x</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="groente-en-fruit">
+        <h3>groente en fruit</h3>
+        <button class="lijst__addRowButton-groente">voeg producten toe</button>
+        <table class="lijst__table-groente_en_fruit">
+            <tr>
+                <th>qty</th>
+                <th>product</th>
+                <th>check</th>
+                <th>remove</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number"  class="lijst__input-number" placeholder="1"/>
+                </td>
+                <td>
+                    <select class="lijst__dropdown-groente_en_fruit" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+                <td><input type="checkbox" class="lijst__checkbox"/></td>
+                <td><button type="button" name="remove" class="removeButton">x</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="dranken">
+        <h3>dranken</h3>
+        <button class="lijst__addRowButton-dranken">voeg producten toe</button>
+        <table class="lijst__table-drank">
+            <tr>
+                <th>qty</th>
+                <th>product</th>
+                <th>check</th>
+                <th>remove</th>
+            </tr>
+            <tr>
+                <td>
+                    <form class="lijst__form">
+                        <input type="number"  class="lijst__input-number" placeholder="1"/>
+                    </form>
+                </td>
+                <td>
+                    <select class="lijst__dropdown-drank" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+                <td><input type="checkbox" class="lijst__checkbox"/></td>
+                <td><button type="button" name="remove" class="removeButton">x</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="koek-en-snoep">
+        <h3>koek en snoep</h3>
+        <button class="lijst__addRowButton-koek">voeg producten toe</button>
+        <table class="lijst__table-koek_en_snoep">
+            <tr>
+                <th>qty</th>
+                <th>product</th>
+                <th>check</th>
+                <th>remove</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number"  class="lijst__input-number" placeholder="1"/>
+                </td>
+                <td>
+                    <select class="lijst__dropdown-koek_en_snoep" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+                <td><input type="checkbox" class="lijst__checkbox"/></td>
+                <td><button type="button" name="remove" class="removeButton">x</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="overige">
+        <h3>overige</h3>
+        <button class="lijst__addRowButton-overige">voeg producten toe</button>
+        <table class="lijst__table-overige">
+            <tr>
+                <th>qty</th>
+                <th>product</th>
+                <th>check</th>
+                <th>remove</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number"  class="lijst__input-number" placeholder="1"/>
+                </td>
+                <td>
+                    <select class="lijst__dropdown-overige" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                        <option>Selecteer product</option>
+                    </select>
+                </td>
+                <td><input type="checkbox" class="lijst__checkbox"/></td>
+                <td><button type="button" name="remove" class="removeButton">x</button></td>
+            </tr>
+        </table>
+    </div>
+    <button id="saveButton">Save</button>
+</div>
+<template class="lijst__table-template-vleeswaren">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-vleeswaren" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-zuivel">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-zuivel" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-groente">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-groente_en_fruit" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-dranken">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-drank" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-koek">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-koek_en_snoep" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-overige">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-overige" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-vleeswaren-GET">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number-GET" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-vleeswaren-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option></option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-zuivel-GET">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number-GET" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-zuivel-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-groente-GET">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number-GET" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-groente_en_fruit-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-dranken-GET">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number-GET" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-drank-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-koek-GET">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number-GET" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-koek_en_snoep-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-overige-GET">
+    <tr>
+        <td>
+            <input type="number"  class="lijst__input-number-GET" placeholder="1"/>
+        </td>
+        <td>
+            <select class="lijst__dropdown-overige-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><input type="checkbox" class="lijst__checkbox"/></td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<script src="../js/Boodschappenlijstje.js"></script>
+</body>
 </html>

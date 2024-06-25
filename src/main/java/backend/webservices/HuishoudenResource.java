@@ -27,6 +27,7 @@ public class HuishoudenResource extends Application {
     public String getHuishouden(@Context SecurityContext securityContext) {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
         String username = securityContext.getUserPrincipal().getName();
+        System.out.println(username);
         User user = UserUtils.getUserByUsername(username);
 
         if (user != null && UserUtils.isValidUser(user)) {
@@ -69,7 +70,7 @@ public class HuishoudenResource extends Application {
     @RolesAllowed("gebruiker")
     public Response addHuishouden(@Context SecurityContext securityContext, String jsonBody) {
         String username = securityContext.getUserPrincipal().getName();
-        Gebruiker gebruiker = (Gebruiker) UserUtils.getGebruikerByUsername(username);
+        Gebruiker gebruiker = UserUtils.getGebruikerByUsername(username);
 
         if (gebruiker != null && UserUtils.isValidUser(gebruiker)) {
             JsonObject jsonObject = Json.createReader(new StringReader(jsonBody)).readObject();
@@ -80,11 +81,6 @@ public class HuishoudenResource extends Application {
                     .filter(h -> h.getHuishoudenNaam().equals(huishoudenNaam))
                     .findFirst()
                     .orElse(null);
-
-            if (nieuwHuishouden != null) {
-                Boodschappenlijstje boodschappenlijstje = new Boodschappenlijstje(nieuwHuishouden);
-                nieuwHuishouden.setBoodschappenlijstje(boodschappenlijstje);
-            }
 
             JsonObjectBuilder responseObject = Json.createObjectBuilder();
             responseObject.add("Huishouden toegevoegd", huishoudenNaam);
@@ -256,5 +252,18 @@ public class HuishoudenResource extends Application {
         }
         System.out.println("Unauthorized access attempt by user: " + username);
         return Response.status(Response.Status.UNAUTHORIZED).build();
+    }
+
+    @GET
+    @Path("/alleHuishouden")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAlleHuishoudens() {
+
+        if (huishoudens != null && !huishoudens.isEmpty()) {
+            return Response.status(Response.Status.OK).entity(huishoudens).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity("Geen favorietenlijstjes gevonden").build();
+        }
     }
 }
