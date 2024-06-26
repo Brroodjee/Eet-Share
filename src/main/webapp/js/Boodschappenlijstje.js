@@ -69,7 +69,7 @@ function VleeswarenDropdown() {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            console.log(data); // Hier log je de ontvangen data naar de console
             populateDropdowns('.lijst__dropdown-vleeswaren', data);
         })
         .catch(error => console.error('Error:', error));
@@ -155,19 +155,22 @@ function populateDropdowns(selector, data) {
 }
 
 function getValues() {
-    const allRows = document.querySelectorAll("table tr");
     const values = [];
+    const categories = ["vleeswaren", "zuivel", "groente_en_fruit", "drank", "koek_en_snoep", "overige"];
 
-    allRows.forEach(row => {
-        const quantityInput = row.querySelector("input[type='number']");
-        const dropdown = row.querySelector("select");
+    categories.forEach(category => {
+        const rows = document.querySelectorAll(`.lijst__table-${category} tr`);
+        rows.forEach(row => {
+            const quantityInput = row.querySelector(".lijst__input-number");
+            const dropdown = row.querySelector(`.lijst__dropdown-${category}`);
 
-        if (quantityInput && dropdown && dropdown.value !== 'Selecteer product') {
-            values.push({
-                product: dropdown.value,
-                quantity: parseInt(quantityInput.value)
-            });
-        }
+            if (quantityInput && dropdown && dropdown.value !== 'Selecteer product') {
+                values.push({
+                    product: dropdown.value,
+                    quantity: parseInt(quantityInput.value)
+                });
+            }
+        });
     });
 
     console.log(values);
@@ -176,7 +179,8 @@ function getValues() {
 
 function postValues(values) {
     values.forEach(({ product, quantity }) => {
-        const bodyData = { productNaam: product, quantity };
+        const location = parseInt("0");
+        const bodyData = { productNaam: product, quantity, location };
 
         fetch("https://tests-1718633149689.azurewebsites.net/eet-share/boodschappenlijstje/testing", {
             method: "POST",

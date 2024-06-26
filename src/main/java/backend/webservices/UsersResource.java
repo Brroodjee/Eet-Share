@@ -22,7 +22,7 @@ public class UsersResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUsers() {
+    public Response getUsers(@Context SecurityContext securityContext) {
         List<User> users = User.getUsers();
         return Response.ok(users).build();
     }

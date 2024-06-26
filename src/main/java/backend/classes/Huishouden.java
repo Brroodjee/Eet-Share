@@ -60,7 +60,6 @@ public class Huishouden implements Serializable {
     public JsonObject toJson() {
         JsonObjectBuilder huishoudenBuilder = Json.createObjectBuilder();
         huishoudenBuilder.add("huishoudenNaam", this.huishoudenNaam);
-        huishoudenBuilder.add("boodschappenlijstje", this.boodschappenlijstje.toJson());
         return huishoudenBuilder.build();
     }
 }

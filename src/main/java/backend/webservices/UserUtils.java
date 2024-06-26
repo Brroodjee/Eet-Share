@@ -1,8 +1,6 @@
 package backend.webservices;
 
-import backend.classes.Gebruiker;
-import backend.classes.Hoofd;
-import backend.classes.User;
+import backend.classes.*;
 
 import java.util.List;
 

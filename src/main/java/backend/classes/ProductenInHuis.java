@@ -4,19 +4,18 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Boodschappenlijstje implements Serializable {
+public class ProductenInHuis {
     private Huishouden huishouden;
     private ArrayList<ProductQuantity> producten;
-    private static List<Boodschappenlijstje> boodschappenlijstjes = new ArrayList<>();
+    private static List<ProductenInHuis> productenInHuis = new ArrayList<>();
 
-    public Boodschappenlijstje(Huishouden huishouden) {
+    public ProductenInHuis(Huishouden huishouden) {
         this.huishouden = huishouden;
         this.producten = new ArrayList<>();
-        boodschappenlijstjes.add(this);
+        productenInHuis.add(this);
     }
 
     public Huishouden getHuishouden() {
@@ -31,19 +30,19 @@ public class Boodschappenlijstje implements Serializable {
         this.producten = producten;
     }
 
-    public static List<Boodschappenlijstje> getBoodschappenlijstjes() {
-        return boodschappenlijstjes;
+    public static List<ProductenInHuis> getProductenInHuis() {
+        return productenInHuis;
     }
 
-    public static void setBoodschappenlijstjes(List<Boodschappenlijstje> boodschappenlijstjes) {
-        Boodschappenlijstje.boodschappenlijstjes = boodschappenlijstjes;
+    public static void setProductenInHuis(List<ProductenInHuis> productenInHuis) {
+        ProductenInHuis.productenInHuis = productenInHuis;
     }
 
     public void addProduct(Product product, int quantity, int location) {
         for (ProductQuantity pq : producten) {
             if (pq.getProduct().equals(product)) {
                 pq.setQuantity(pq.getQuantity() + quantity);
-                pq.setLocation(location);
+                pq.setLocation(location); // Update location if product already exists
                 return;
             }
         }
@@ -51,15 +50,15 @@ public class Boodschappenlijstje implements Serializable {
     }
 
     public JsonObject toJson() {
-        JsonObjectBuilder boodschappenlijstjeBuilder = Json.createObjectBuilder();
-        boodschappenlijstjeBuilder.add("huishoudenNaam", this.huishouden.getHuishoudenNaam());
+        JsonObjectBuilder productenInHuisBuilder = Json.createObjectBuilder();
+        productenInHuisBuilder.add("huishoudenNaam", this.huishouden.getHuishoudenNaam());
 
         JsonArrayBuilder productenArrayBuilder = Json.createArrayBuilder();
         for (ProductQuantity productQuantity : this.producten) {
             productenArrayBuilder.add(productQuantity.toJson());
         }
-        boodschappenlijstjeBuilder.add("producten", productenArrayBuilder);
+        productenInHuisBuilder.add("producten", productenArrayBuilder);
 
-        return boodschappenlijstjeBuilder.build();
+        return productenInHuisBuilder.build();
     }
 }

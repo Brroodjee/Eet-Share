@@ -15,118 +15,168 @@
 </div>
 <div id="center">
     <h1>Producten in Huis</h1>
-    <button class="collapsible"><input type="text" class="productenInHuis__input--text" placeholder="Koelkast"/></button>
+    <button class="collapsible" data-location="1"><input type="text" class="productenInHuis__input--text" placeholder="Koelkast"/></button>
     <div class="content">
         <h1>Producten</h1>
-        <button class="addRowButton">Add a product</button>
-        <table class="theTable">
+        <button class="addRowButton-1">Add a product</button>
+        <table class="theTable-1">
             <tr>
                 <th>qty</th>
                 <th>product</th>
                 <th>remove</th>
             </tr>
-            <tr>
-                <td><input type="number"  class="productInHuis__input-number" placeholder="1"/></td>
-                <td>
-                    <select class="product-dropdown" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                        <option>Selecteer product</option>
-                    </select>
-                </td>
-                <td><button type="button" name="remove" class="removeButton">x</button></td>
-            </tr>
         </table>
     </div>
-    <button class="collapsible"><input type="text" class="productenInHuis__input--text" placeholder="Vriezer"/></button>
+    <button class="collapsible" data-location="2"><input type="text" class="productenInHuis__input--text" placeholder="Vriezer"/></button>
     <div class="content">
         <h1>Producten</h1>
-        <button class="addRowButton">Add a product</button>
-        <table class="theTable">
+        <button class="addRowButton-2">Add a product</button>
+        <table class="theTable-2">
             <tr>
                 <th>qty</th>
                 <th>product</th>
                 <th>remove</th>
             </tr>
-            <tr>
-                <td><input type="number"  class="productInHuis__input-number" placeholder="1"/></td>
-                <td>
-                    <select class="product-dropdown" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                        <option>Selecteer product</option>
-                    </select>
-                </td>
-                <td><button type="button" name="remove" class="removeButton">x</button></td>
-            </tr>
         </table>
     </div>
-    <button class="collapsible"><input type="text" class="productenInHuis__input--text" placeholder="Vriezer"/></button>
+    <button class="collapsible" data-location="3"><input type="text" class="productenInHuis__input--text" placeholder="Vriezer"/></button>
     <div class="content">
         <h1>Producten</h1>
-        <button class="addRowButton">Add a product</button>
-        <table class="theTable">
+        <button class="addRowButton-3">Add a product</button>
+        <table class="theTable-3">
             <tr>
                 <th>qty</th>
                 <th>product</th>
                 <th>remove</th>
             </tr>
-            <tr>
-                <td><input type="number"  class="productInHuis__input-number" placeholder="1"/></td>
-                <td>
-                    <select class="product-dropdown" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                        <option>Selecteer product</option>
-                    </select>
-                </td>
-                <td><button type="button" name="remove" class="removeButton">x</button></td>
-            </tr>
         </table>
     </div>
-    <button class="collapsible"><input type="text" class="productenInHuis__input--text" placeholder="Voer in waar u uw producten bewaard"/></button>
+    <button class="collapsible" data-location="4"><input type="text" class="productenInHuis__input--text" placeholder="Voer in waar u uw producten bewaard"/></button>
     <div class="content">
         <h1>Producten</h1>
-        <button class="addRowButton">Add a product</button>
-        <table class="theTable">
+        <button class="addRowButton-4">Add a product</button>
+        <table class="theTable-4">
             <tr>
                 <th>qty</th>
                 <th>product</th>
                 <th>remove</th>
             </tr>
-            <tr>
-                <td><input type="number"  class="productInHuis__input-number" placeholder="1"/></td>
-                <td>
-                    <select class="product-dropdown" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                        <option>Selecteer product</option>
-                    </select>
-                </td>
-                <td><button type="button" name="remove" class="removeButton">x</button></td>
-            </tr>
         </table>
     </div>
-    <button class="collapsible"><input type="text" class="productenInHuis__input--text" placeholder="Voer in waar u uw producten bewaard"/></button>
+    <button class="collapsible" data-location="5"><input type="text" class="productenInHuis__input--text" placeholder="Voer in waar u uw producten bewaard"/></button>
     <div class="content">
         <h1>Producten</h1>
-        <button class="addRowButton">Add a product</button>
-        <table class="theTable">
+        <button class="addRowButton-5">Add a product</button>
+        <table class="theTable-5">
             <tr>
                 <th>qty</th>
                 <th>product</th>
                 <th>remove</th>
             </tr>
-            <tr>
-                <td><input type="number"  class="productInHuis__input-number" placeholder="1"/></td>
-                <td>
-                    <select class="product-dropdown" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                        <option>Selecteer product</option>
-                    </select>
-                </td>
-                <td><button type="button" name="remove" class="removeButton">x</button></td>
-            </tr>
         </table>
     </div>
+    <button id="saveButton">Save</button>
 </div>
-<template id="productInHuis__Table-template">
+<template id="productInHuis__Table-template-1">
     <tr>
         <td><input type="number" class="productInHuis__input-number" placeholder="1"/></td>
         <td>
             <select class="product-dropdown" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
                 <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template id="productInHuis__Table-template-2">
+    <tr>
+        <td><input type="number" class="productInHuis__input-number" placeholder="1"/></td>
+        <td>
+            <select class="product-dropdown" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template id="productInHuis__Table-template-3">
+    <tr>
+        <td><input type="number" class="productInHuis__input-number" placeholder="1"/></td>
+        <td>
+            <select class="product-dropdown" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template id="productInHuis__Table-template-4">
+    <tr>
+        <td><input type="number" class="productInHuis__input-number" placeholder="1"/></td>
+        <td>
+            <select class="product-dropdown" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template id="productInHuis__Table-template-5">
+    <tr>
+        <td><input type="number" class="productInHuis__input-number" placeholder="1"/></td>
+        <td>
+            <select class="product-dropdown" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option>Selecteer product</option>
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template id="productInHuis__Table-template-1-GET">
+    <tr>
+        <td><input type="number" class="productInHuis__input-number-GET" placeholder="1"/></td>
+        <td>
+            <select class="product-dropdown-1-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template id="productInHuis__Table-template-2-GET">
+    <tr>
+        <td><input type="number" class="productInHuis__input-number-GET" placeholder="1"/></td>
+        <td>
+            <select class="product-dropdown-2-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template id="productInHuis__Table-template-3-GET">
+    <tr>
+        <td><input type="number" class="productInHuis__input-number-GET" placeholder="1"/></td>
+        <td>
+            <select class="product-dropdown-3-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template id="productInHuis__Table-template-4-GET">
+    <tr>
+        <td><input type="number" class="productInHuis__input-number-GET" placeholder="1"/></td>
+        <td>
+            <select class="product-dropdown-4-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template id="productInHuis__Table-template-5-GET">
+    <tr>
+        <td><input type="number" class="productInHuis__input-number-GET" placeholder="1"/></td>
+        <td>
+            <select class="product-dropdown-5-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
             </select>
         </td>
         <td><button type="button" name="remove" class="removeButton">x</button></td>

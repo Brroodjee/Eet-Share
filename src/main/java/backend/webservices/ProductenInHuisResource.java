@@ -3,19 +3,22 @@ package backend.webservices;
 import backend.classes.*;
 
 import javax.annotation.security.RolesAllowed;
-import javax.json.*;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.io.StringReader;
 import java.util.List;
 
-@Path("/boodschappenlijstje")
-public class BoodschappenlijstjeResource extends Application {
+@Path("/productenthuis")
+public class ProductenInHuisResource extends Application {
 
-    List<Boodschappenlijstje> boodschappenlijstjes = Boodschappenlijstje.getBoodschappenlijstjes();
+    List<ProductenInHuis> productenInHuis = ProductenInHuis.getProductenInHuis();
 
-    private Boodschappenlijstje findBoodschappenlijstjeByHuishouden(Huishouden huishouden) {
-        for (Boodschappenlijstje lijstje : Boodschappenlijstje.getBoodschappenlijstjes()) {
+    private ProductenInHuis findProductenByHuishouden(Huishouden huishouden) {
+        for (ProductenInHuis lijstje : ProductenInHuis.getProductenInHuis()) {
             if (lijstje.getHuishouden().equals(huishouden)) {
                 return lijstje;
             }
@@ -41,20 +44,24 @@ public class BoodschappenlijstjeResource extends Application {
 
             Huishouden huishouden = findHuishoudenByUser(user);
             if (huishouden != null) {
-                Boodschappenlijstje boodschappenlijstje = findBoodschappenlijstjeByHuishouden(huishouden);
+                ProductenInHuis productenInHuis = findProductenByHuishouden(huishouden);
 
-                if (boodschappenlijstje == null) {
-                    boodschappenlijstje = new Boodschappenlijstje(huishouden);
+                if (productenInHuis == null) {
+                    productenInHuis = new ProductenInHuis(huishouden);
                 }
 
                 String productNaam = jsonObject.getString("productNaam");
+                System.out.println(productNaam);
                 int quantity = jsonObject.getInt("quantity");
+                System.out.println(quantity);
                 int location = jsonObject.getInt("location");
+                System.out.println(location);
 
                 Product product = findProductByName(productNaam);
                 if (product != null) {
-                    boodschappenlijstje.addProduct(product, quantity, location);
-                    return Response.ok(boodschappenlijstje.toJson()).build();
+                    productenInHuis.addProduct(product, quantity, location); // Add location here
+                    System.out.println(productenInHuis);
+                    return Response.ok(productenInHuis.toJson()).build();
                 } else {
                     return Response.status(Response.Status.NOT_FOUND).entity("Product not found").build();
                 }
@@ -64,20 +71,17 @@ public class BoodschappenlijstjeResource extends Application {
         return Response.status(Response.Status.UNAUTHORIZED).build();
     }
 
-
     @GET
-    @Path("/alleBoodschappenlijstjes")
+    @Path("/alleProductenThuis")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAlleBoodschappenlijstjes() {
-
-        if (boodschappenlijstjes != null && !boodschappenlijstjes.isEmpty()) {
-            return Response.status(Response.Status.OK).entity(boodschappenlijstjes).build();
+        if (productenInHuis != null && !productenInHuis.isEmpty()) {
+            return Response.status(Response.Status.OK).entity(productenInHuis).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND)
                     .entity("Geen favorietenlijstjes gevonden").build();
         }
     }
-
 
     private Huishouden findHuishoudenByUser(User user) {
         for (Huishouden huishouden : Huishouden.getHuishoudens()) {
@@ -108,22 +112,29 @@ public class BoodschappenlijstjeResource extends Application {
         if (user != null && UserUtils.isValidUser(user)) {
             Huishouden huishouden = findHuishoudenByUser(user);
             if (huishouden != null) {
-                Boodschappenlijstje boodschappenlijstje = findBoodschappenlijstjeByHuishouden(huishouden);
+                ProductenInHuis productenInHuis = findProductenByHuishouden(huishouden);
 
-                if (boodschappenlijstje == null) {
+                if (productenInHuis == null) {
                     throw new NotFoundException("Boodschappenlijstje niet gevonden voor huishouden");
                 }
 
+                JsonObjectBuilder responseBuilder = Json.createObjectBuilder();
+                responseBuilder.add("huishoudenNaam", huishouden.getHuishoudenNaam());
+
                 JsonArrayBuilder productArrayBuilder = Json.createArrayBuilder();
-                for (ProductQuantity productQuantity : boodschappenlijstje.getProducten()) {
+                for (ProductQuantity productQuantity : productenInHuis.getProducten()) {
                     JsonObjectBuilder productBuilder = Json.createObjectBuilder();
-                    productBuilder.add("product", productQuantity.getProduct().toJson()); // Voeg hele product toe
+                    productBuilder.add("product", productQuantity.getProduct().toJson());
                     productBuilder.add("quantity", productQuantity.getQuantity());
+                    productBuilder.add("location", productQuantity.getLocation());
                     productArrayBuilder.add(productBuilder);
                 }
 
-                JsonArray productArray = productArrayBuilder.build();
-                return productArray.toString();
+                responseBuilder.add("producten", productArrayBuilder);
+
+                JsonObject responseJson = responseBuilder.build();
+
+                return responseJson.toString();
             }
 
             throw new Error("Gebruiker niet geautoriseerd");

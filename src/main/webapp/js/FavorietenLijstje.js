@@ -155,17 +155,20 @@ function populateDropdowns(selector, data) {
 }
 
 function getValues() {
-    const allRows = document.querySelectorAll("table tr");
     const values = [];
+    const categories = ["vleeswaren", "zuivel", "groente_en_fruit", "drank", "koek_en_snoep", "overige"];
 
-    allRows.forEach(row => {
-        const dropdown = row.querySelector("select");
+    categories.forEach(category => {
+        const rows = document.querySelectorAll(`.lijst__table-${category} tr`);
+        rows.forEach(row => {
+            const dropdown = row.querySelector(`.lijst__dropdown-${category}`);
 
-        if (dropdown && dropdown.value !== 'Selecteer product') {
-            values.push({
-                product: dropdown.value,
-            });
-        }
+            if (dropdown && dropdown.value !== 'Selecteer product') {
+                values.push({
+                    product: dropdown.value,
+                });
+            }
+        });
     });
 
     console.log(values);
@@ -176,7 +179,7 @@ function postValues(values) {
     values.forEach(({ product }) => {
         const bodyData = { productNaam: product };
 
-        fetch("https://tests-1718633149689.azurewebsites.net/eet-share/boodschappenlijstje/testing", {
+        fetch("https://tests-1718633149689.azurewebsites.net/eet-share/favorietenlijstje", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
