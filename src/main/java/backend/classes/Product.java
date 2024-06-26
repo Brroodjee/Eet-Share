@@ -142,6 +142,7 @@ public class Product implements Serializable {
         productBuilder.add("isKoek", this.isKoek);
         productBuilder.add("isSnoep", this.isSnoep);
         productBuilder.add("isOverige", this.isOverige);
+        productBuilder.add("category", this.getCategory());
 
         return productBuilder.build();
     }

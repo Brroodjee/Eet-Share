@@ -456,12 +456,33 @@ body {
     background-color: rgba(0, 0, 0, 0.2); /* https://www.w3schools.com/css/css_image_transparency.asp */
 }
 
+.lijst__input-number-GET {
+    width: 50px;
+    background-color: transparent;
+    border: none;
+}
+
+.lijst__input-number-GET:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* https://www.w3schools.com/css/css_image_transparency.asp */
+}
+
 .lijst__dropdown-vleeswaren,
 .lijst__dropdown-zuivel,
 .lijst__dropdown-groente_en_fruit,
 .lijst__dropdown-drank,
 .lijst__dropdown-koek_en_snoep,
 .lijst__dropdown-overige {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.lijst__dropdown-vleeswaren-GET,
+.lijst__dropdown-zuivel-GET,
+.lijst__dropdown-groente_en_fruit-GET,
+.lijst__dropdown-drank-GET,
+.lijst__dropdown-koek_en_snoep-GET,
+.lijst__dropdown-overige-GET {
     width: 100%;
     background-color: transparent;
     border: none;
@@ -773,4 +794,3 @@ body {
     border-radius: var(--border-radius);
     transition: width 5s linear;
 }
-

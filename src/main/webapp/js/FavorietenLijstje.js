@@ -2,6 +2,14 @@ const token = window.sessionStorage.getItem("myJWT");
 
 document.addEventListener("DOMContentLoaded", () => {
     initializeEventListeners();
+    document.getElementById('saveButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        const values = getValues();
+        console.log(values);
+        postValues(values);
+    });
+
+    getFavorietenlijstje();
 });
 
 function initializeEventListeners() {
@@ -60,7 +68,10 @@ function VleeswarenDropdown() {
         }
     })
         .then(response => response.json())
-        .then(data => populateDropdowns('.lijst__dropdown-vleeswaren', data))
+        .then(data => {
+            console.log(data);
+            populateDropdowns('.lijst__dropdown-vleeswaren', data);
+        })
         .catch(error => console.error('Error:', error));
 }
 
@@ -136,7 +147,7 @@ function populateDropdowns(selector, data) {
             data.forEach(product => {
                 const option = document.createElement('option');
                 option.text = product.productNaam;
-                option.value = product.productNaam; // Set the value to product name
+                option.value = product.productNaam;
                 dropdown.add(option);
             });
         }
@@ -144,59 +155,123 @@ function populateDropdowns(selector, data) {
 }
 
 function getValues() {
-    const vleeswaren = Array.from(document.querySelectorAll(".lijst__dropdown-vleeswaren")).map(select => select.value);
-    const zuivel = Array.from(document.querySelectorAll(".lijst__dropdown-zuivel")).map(select => select.value);
-    const groenteEnFruit = Array.from(document.querySelectorAll(".lijst__dropdown-groente_en_fruit")).map(select => select.value);
-    const dranken = Array.from(document.querySelectorAll(".lijst__dropdown-drank")).map(select => select.value);
-    const koekEnSnoep = Array.from(document.querySelectorAll(".lijst__dropdown-koek_en_snoep")).map(select => select.value);
-    const overige = Array.from(document.querySelectorAll(".lijst__dropdown-overige")).map(select => select.value);
+    const allRows = document.querySelectorAll("table tr");
+    const values = [];
 
-    const values = {
-        vleeswaren: vleeswaren.filter(value => value !== 'Selecteer product'),
-        zuivel: zuivel.filter(value => value !== 'Selecteer product'),
-        groenteEnFruit: groenteEnFruit.filter(value => value !== 'Selecteer product'),
-        dranken: dranken.filter(value => value !== 'Selecteer product'),
-        koekEnSnoep: koekEnSnoep.filter(value => value !== 'Selecteer product'),
-        overige: overige.filter(value => value !== 'Selecteer product')
-    };
+    allRows.forEach(row => {
+        const dropdown = row.querySelector("select");
+
+        if (dropdown && dropdown.value !== 'Selecteer product') {
+            values.push({
+                product: dropdown.value,
+            });
+        }
+    });
 
     console.log(values);
-
     return values;
 }
 
-document.getElementById('getValuesButton').addEventListener('click', function(event) {
-    event.preventDefault();
-    const values = getValues();
-    console.log(values);
+function postValues(values) {
+    values.forEach(({ product }) => {
+        const bodyData = { productNaam: product };
 
-    // Post all the values
-    for (const [category, products] of Object.entries(values)) {
-        products.forEach(product => {
-            if (product !== 'Selecteer product') {
-                const bodyData = { productNaam: product };
+        fetch("https://tests-1718633149689.azurewebsites.net/eet-share/boodschappenlijstje/testing", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(bodyData)
+        })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then((data) => {
+                console.log(`Product ${product} toegevoegd aan lijstje`, data);
+            })
+            .catch((error) => {
+                console.error(`Fout bij het toevoegen van product ${product}: `, error);
+            });
+    });
+}
 
-                fetch("https://tests-1718633149689.azurewebsites.net/eet-share/favorietenlijstje", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`
-                    },
-                    body: JSON.stringify(bodyData)
-                })
-                    .then((res) => {
-                        if (!res.ok) {
-                            throw new Error(`HTTP error! status: ${res.status}`);
-                        }
-                        return res.json();
-                    })
-                    .then((data) => {
-                        console.log(`Product ${product} toegevoegd aan lijstje`, data);
-                    })
-                    .catch((error) => {
-                        console.error(`Fout bij het toevoegen van product ${product}: `, error);
-                    });
-            }
+function getFavorietenlijstje() {
+    console.log("getFavorietenlijstje() called");
+    fetch('https://tests-1718633149689.azurewebsites.net/eet-share/favorietenlijstje/mijn', {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const producten = data.producten;
+            producten.forEach(product => {
+                console.log('Product:', product);
+                const category = product.category;
+
+                let tableSelector;
+                let templateSelector;
+
+                switch (category) {
+                    case 'vleeswaren':
+                        tableSelector = '.lijst__table-vleeswaren';
+                        templateSelector = '.lijst__table-template-vleeswaren-GET';
+                        break;
+                    case 'groente_en_fruit':
+                        tableSelector = '.lijst__table-groente_en_fruit';
+                        templateSelector = '.lijst__table-template-groente-GET';
+                        break;
+                    case 'dranken':
+                        tableSelector = '.lijst__table-drank';
+                        templateSelector = '.lijst__table-template-dranken-GET';
+                        break;
+                    case 'zuivel':
+                        tableSelector = '.lijst__table-zuivel';
+                        templateSelector = '.lijst__table-template-zuivel-GET';
+                        break;
+                    case 'koek_en_snoep':
+                        tableSelector = '.lijst__table-koek_en_snoep';
+                        templateSelector = '.lijst__table-template-koek-GET';
+                        break;
+                    case 'overige':
+                        tableSelector = '.lijst__table-overige';
+                        templateSelector = '.lijst__table-template-overige-GET';
+                        break;
+                    default:
+                        console.log(`Onbekende categorie voor product: ${product.productNaam}`);
+                        return;
+                }
+
+                const table = document.querySelector(tableSelector);
+                const template = document.querySelector(templateSelector);
+
+                if (!template) {
+                    console.error(`Template niet gevonden voor selector: ${templateSelector}`);
+                    return;
+                }
+
+                const newRow = document.importNode(template.content, true);
+                const dropdown = newRow.querySelector('select');
+
+                const option = document.createElement('option');
+                option.value = product.productNaam;
+                option.text = product.productNaam;
+                dropdown.add(option);
+                dropdown.value = product.productNaam;
+
+                console.log(product.productNaam);
+
+                table.appendChild(newRow);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
         });
-    }
-});
+}

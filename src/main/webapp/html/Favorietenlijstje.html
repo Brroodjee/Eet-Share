@@ -25,16 +25,6 @@
                 <th>product</th>
                 <th>remove</th>
             </tr>
-            <tr>
-                <td>
-                    <select class="lijst__dropdown-vleeswaren" name="product">
-                        <option>Selecteer product</option>
-                    </select>
-                </td>
-                <td>
-                    <button type="button" name="remove" class="removeButton">x</button>
-                </td>
-            </tr>
         </table>
     </div>
     <div class="zuivel">
@@ -44,16 +34,6 @@
             <tr>
                 <th>product</th>
                 <th>remove</th>
-            </tr>
-            <tr>
-                <td>
-                    <select class="lijst__dropdown-zuivel" name="product">
-                        <option>Selecteer product</option>
-                    </select>
-                </td>
-                <td>
-                    <button type="button" name="remove" class="removeButton">x</button>
-                </td>
             </tr>
         </table>
     </div>
@@ -65,16 +45,6 @@
                 <th>product</th>
                 <th>remove</th>
             </tr>
-            <tr>
-                <td>
-                    <select class="lijst__dropdown-groente_en_fruit" name="product">
-                        <option>Selecteer product</option>
-                    </select>
-                </td>
-                <td>
-                    <button type="button" name="remove" class="removeButton">x</button>
-                </td>
-            </tr>
         </table>
     </div>
     <div class="dranken">
@@ -84,16 +54,6 @@
             <tr>
                 <th>product</th>
                 <th>remove</th>
-            </tr>
-            <tr>
-                <td>
-                    <select class="lijst__dropdown-drank" name="product">
-                        <option>Selecteer product</option>
-                    </select>
-                </td>
-                <td>
-                    <button type="button" name="remove" class="removeButton">x</button>
-                </td>
             </tr>
         </table>
     </div>
@@ -105,16 +65,6 @@
                 <th>product</th>
                 <th>remove</th>
             </tr>
-            <tr>
-                <td>
-                    <select class="lijst__dropdown-koek_en_snoep" name="product">
-                        <option>Selecteer product</option>
-                    </select>
-                </td>
-                <td>
-                    <button type="button" name="remove" class="removeButton">x</button>
-                </td>
-            </tr>
         </table>
     </div>
     <div class="overige">
@@ -125,19 +75,9 @@
                 <th>product</th>
                 <th>remove</th>
             </tr>
-            <tr>
-                <td>
-                    <select class="lijst__dropdown-overige" name="product">
-                        <option>Selecteer product</option>
-                    </select>
-                </td>
-                <td>
-                    <button type="button" name="remove" class="removeButton">x</button>
-                </td>
-            </tr>
         </table>
     </div>
-    <button id="getValuesButton">Get Values</button>
+    <button id="saveButton">Save</button>
 </div>
 <template class="lijst__table-template-vleeswaren">
     <tr>
@@ -209,6 +149,66 @@
         <td>
             <button type="button" name="remove" class="removeButton">x</button>
         </td>
+    </tr>
+</template>
+<template class="lijst__table-template-vleeswaren-GET">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-vleeswaren-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option></option>
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-zuivel-GET">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-zuivel-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option></option>
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-groente-GET">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-groente_en_fruit-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option></option>
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-dranken-GET">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-drank-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option></option>
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-koek-GET">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-koek_en_snoep-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option></option>
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
+    </tr>
+</template>
+<template class="lijst__table-template-overige-GET">
+    <tr>
+        <td>
+            <select class="lijst__dropdown-overige-GET" name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
+                <option></option>
+            </select>
+        </td>
+        <td><button type="button" name="remove" class="removeButton">x</button></td>
     </tr>
 </template>
 <script src="../js/FavorietenLijstje.js"></script>

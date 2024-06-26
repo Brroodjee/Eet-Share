@@ -1,12 +1,9 @@
 package backend.webservices;
 
-import backend.classes.Favorietenlijstje;
-import backend.classes.Product;
-import backend.classes.User;
+import backend.classes.*;
 
 import javax.annotation.security.RolesAllowed;
-import javax.json.Json;
-import javax.json.JsonObject;
+import javax.json.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -69,7 +66,7 @@ public class FavorietenlijstjeResource {
 
             if (userFavorietenlijstje == null) {
                 userFavorietenlijstje = new Favorietenlijstje(user);
-                userFavorietenlijstje.setProducten(new ArrayList<>());
+                userFavorietenlijstje.setProducten(new ArrayList<>()); // Initialize producten lijst
                 favorietenlijstjes.add(userFavorietenlijstje);
                 System.out.println("hier");
             }
@@ -90,5 +87,38 @@ public class FavorietenlijstjeResource {
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
+    @GET
+    @Path("/mijn")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getFavorietenlijstje(@Context SecurityContext securityContext) {
+        String username = securityContext.getUserPrincipal().getName();
+        System.out.println(username);
+        User user = UserUtils.getUserByUsername(username);
+        System.out.println(user);
 
+        if (user != null && UserUtils.isValidUser(user)) {
+            Favorietenlijstje favorietenlijstje = null;
+            for (Favorietenlijstje lijstje : Favorietenlijstje.getFavorietenlijstjes()) {
+                if (lijstje.getUserFavorietenlijstje().getUsername().equals(user.getUsername())) {
+                    favorietenlijstje = lijstje;
+                    break;
+                }
+            }
+
+            if (favorietenlijstje != null) {
+                JsonArrayBuilder productenArrayBuilder = Json.createArrayBuilder();
+                for (Product product : favorietenlijstje.getProducten()) {
+                    productenArrayBuilder.add(product.toJson());
+                }
+                JsonObjectBuilder jsonBuilder = Json.createObjectBuilder();
+                jsonBuilder.add("producten", productenArrayBuilder);
+
+                return jsonBuilder.build().toString();
+            } else {
+                throw new NotFoundException("favorietenlijstje niet gevonden");
+            }
+        } else {
+            throw new Error("Gebruiker niet geautoriseerd");
+        }
+    }
 }
