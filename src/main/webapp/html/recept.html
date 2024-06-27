@@ -6,45 +6,30 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="lijst__body">
-    <div id="boodschappenlijstje__menu">
-        <h1>Menu</h1>
-        <a href="homepage.html">Homepage</a>
-        <a href="#">Boodschappenlijst</a>
-        <a href="Huishouden.html">Huishouden</a>
-        <a href="">Kookboek</a>
-    </div>
-    <div class="recept__div">
-        <div class="hero">
-            <label for="input-file" id="drop-area">
-                <input type="file" accept="image/*" id="input-file" hidden>
-                <div id="img-view">
-                    <img src="../pngs/camera.png" alt="camerapng">
-                    <p>Drag and drop or click here <br> to upload img</p>
-                    <span>Upload any images from desktop</span>
-                </div>
-            </label>
-        </div>
-        <input type="text" placeholder="<<dish name>>" id="dish-name">
+<div id="boodschappenlijstje__menu">
+    <h1>Menu</h1>
+    <a href="homepage.html">Homepage</a>
+    <a href="Boodschappenlijstje.html">Boodschappenlijst</a>
+    <a href="Huishouden.html">Huishouden</a>
+    <a href="kookboek.html">Kookboek</a>
+</div>
+<div class="recept__div">
+    <form id="recept-form">
+        <input type="text" placeholder="<<dish name>>" id="dish-name" name="dish-name" required>
         <label id="serving-label">Servings</label>
-        <input type="text" placeholder="4" id="serving-text">
+        <input type="number" placeholder="4" id="serving-text" name="servings" required>
         <label id="cooking-label">Cooking time</label>
-        <input type="text" placeholder="50 minutes" id="cooking-text">
+        <input type="number" placeholder="50 minutes" id="cooking-text" name="cooking-time" required>
         <label id="prep-label">prep time</label>
-        <input type="text" placeholder="15 minutes" id="prep-text">
-        <table id="line">
-            <tr>
-                <th>.</th>
-            </tr>
-        </table>
-        <div id="ingredients">
-            <select name="product">  <!--https://www.w3schools.com/tags/tag_select.asp-->
-                <option>Selecteer product</option>
-            </select>
-        </div>
+        <input type="number" placeholder="15 minutes" id="prep-text" name="prep-time" required>
         <label id="instructions">instructions</label>
-        <input type="text" id="instructions-text"/>
+        <textarea id="instructions-text" name="instructions" required></textarea>
+        <button id="submitbutton" type="submit">Submit</button>
+    </form>
+    <div class="progressContainer">
+        <div class="progressBar"></div>
     </div>
+</div>
 <script src="../js/recepten.js"></script>
 </body>
-
 </html>

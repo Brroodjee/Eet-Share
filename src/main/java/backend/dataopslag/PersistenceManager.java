@@ -53,6 +53,9 @@ public class PersistenceManager {
             List<Invite> loadedInvites = (List<Invite>) ois.readObject();
             Invite.setInvites(loadedInvites);
 
+            List<ProductenInHuis> loadedProductenInHuis = (List<ProductenInHuis>) ois.readObject();
+            ProductenInHuis.setProductenInHuis(loadedProductenInHuis);
+
             ois.close();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -78,6 +81,7 @@ public class PersistenceManager {
             List<Hoofd> saveToHoofd = Hoofd.getHoofden();
             List<Lid> saveToLid = Lid.getLeden();
             List<Invite> saveToInvites = Invite.getInvites();
+            List<ProductenInHuis> saveToProductenThuis = ProductenInHuis.getProductenInHuis();
             Path userStorage = Path.of("/home/userdata.obj");
 
             OutputStream os = Files.newOutputStream(userStorage);
@@ -95,6 +99,7 @@ public class PersistenceManager {
             oos.writeObject(saveToHoofd);
             oos.writeObject(saveToLid);
             oos.writeObject(saveToInvites);
+            oos.writeObject(saveToProductenThuis);
             os.close();
             oos.close();
         } catch (IOException e) {

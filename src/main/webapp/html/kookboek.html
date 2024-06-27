@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Recepten</title>
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body class="lijst__body">
+        <div id="boodschappenlijstje__menu">
+            <h1>Menu</h1>
+            <a href="homepage.html">Homepage</a>
+            <a href="Boodschappenlijstje.html">Boodschappenlijst</a>
+            <a href="Huishouden.html">Huishouden</a>
+            <a href="">Kookboek</a>
+        </div>
+        <div class="kookboek">
+            <div class="search-bar">
+                <input list="recipe-suggestions" type="search" id="search" name="search" placeholder="Search recipes..." oninput="showSuggestions(this.value)">
+                <datalist id="recipe-suggestions"></datalist>
+                <button type="button" id="search-button" onclick="searchRecipe()">Search</button>
+            </div>
+            <div class="kookboek-recept__div">
+                <form id="recept-form">
+                    <input type="text" placeholder="<<dish name>>" id="dish-name" name="dish-name" required>
+                    <label id="serving-label">Servings</label>
+                    <input type="number" placeholder="4" id="serving-text" name="servings" required>
+                    <label id="cooking-label">Cooking time</label>
+                    <input type="number" placeholder="50 minutes" id="cooking-text" name="cooking-time" required>
+                    <label id="prep-label">prep time</label>
+                    <input type="number" placeholder="15 minutes" id="prep-text" name="prep-time" required>
+                    <label id="instructions">instructions</label>
+                    <textarea id="instructions-text" name="instructions" required></textarea>
+                </form>
+            </div>
+            <div class="progressContainer">
+                <div class="progressBar"></div>
+            </div>
+        </div>
+        <script src="../js/kookboek.js"></script>
+    </body>
+</html>

@@ -5,19 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Kookboek implements Serializable {
-    private int kookboekID;
     private Huishouden huishouden;
     private ArrayList<Recept> recepten;
     private static List<Kookboek> kookboeken = new ArrayList<>();
 
-    public Kookboek(int kookboekID, Huishouden huishouden) {
-        this.kookboekID = kookboekID;
+    public Kookboek(Huishouden huishouden) {
         this.huishouden = huishouden;
+        this.recepten = new ArrayList<>();
+        Kookboek.getKookboeken().add(this);
     }
 
-    public int getKookboekID() {
-        return kookboekID;
-    }
 
     public Huishouden getHuishouden() {
         return huishouden;
@@ -27,8 +24,8 @@ public class Kookboek implements Serializable {
         return recepten;
     }
 
-    public void setRecepten(ArrayList<Recept> recepten) {
-        this.recepten = recepten;
+    public void addRecept(Recept recept) {
+        this.recepten.add(recept);
     }
 
     public static List<Kookboek> getKookboeken() {

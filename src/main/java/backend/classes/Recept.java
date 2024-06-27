@@ -6,26 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recept implements Serializable {
-    private int receptID;
     private String receptNaam;
     private int servings;
-    private Duration cookingTime;
-    private Duration preppingTime;
+    private int cookingTime;
+    private int preppingTime;
     private String beschrijving;
     private ArrayList<Product> producten;
     private static List<Recept> recepten = new ArrayList<>();
 
-    public Recept(int receptID, String receptNaam, int servings, Duration cookingTime, Duration preppingTime, String beschrijving) {
-        this.receptID = receptID;
+    public Recept(String receptNaam, int servings, int cookingTime, int preppingTime, String beschrijving) {
         this.receptNaam = receptNaam;
         this.servings = servings;
         this.cookingTime = cookingTime;
         this.preppingTime = preppingTime;
         this.beschrijving = beschrijving;
-    }
-
-    public int getReceptID() {
-        return receptID;
     }
 
     public String getReceptNaam() {
@@ -36,11 +30,11 @@ public class Recept implements Serializable {
         return servings;
     }
 
-    public Duration getCookingTime() {
+    public int getCookingTime() {
         return cookingTime;
     }
 
-    public Duration getPreppingTime() {
+    public int getPreppingTime() {
         return preppingTime;
     }
 
@@ -52,10 +46,6 @@ public class Recept implements Serializable {
         return producten;
     }
 
-    public void setReceptID(int receptID) {
-        this.receptID = receptID;
-    }
-
     public void setReceptNaam(String receptNaam) {
         this.receptNaam = receptNaam;
     }
@@ -64,11 +54,11 @@ public class Recept implements Serializable {
         this.servings = servings;
     }
 
-    public void setCookingTime(Duration cookingTime) {
+    public void setCookingTime(int cookingTime) {
         this.cookingTime = cookingTime;
     }
 
-    public void setPreppingTime(Duration preppingTime) {
+    public void setPreppingTime(int preppingTime) {
         this.preppingTime = preppingTime;
     }
 

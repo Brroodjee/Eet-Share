@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const acceptOrDeclineModal = document.getElementById("acceptOrDeclineModal");
     const BtnLink = document.getElementById("acceptInvite");

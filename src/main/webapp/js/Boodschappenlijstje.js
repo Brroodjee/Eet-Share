@@ -1,12 +1,24 @@
 const token = window.sessionStorage.getItem("myJWT");
 
 document.addEventListener("DOMContentLoaded", () => {
+    const responseMessageHuishouden = document.querySelector(".responseMessage");
+    const progressBarHuishouden = document.querySelector(".progressBar");
+
     initializeEventListeners();
+
     document.getElementById('saveButton').addEventListener('click', function(event) {
         event.preventDefault();
         const values = getValues();
         console.log(values);
         postValues(values);
+
+        console.log("sluit na 5 sec")
+        responseMessageHuishouden.innerText = "Boodschappenlijst opgeslagen!";
+        responseMessageHuishouden.style.color = "green" //https://www.w3schools.com/jsref/prop_style_color.asp
+        progressBarHuishouden.style.width = "100%";
+        setTimeout(() => {
+            location.reload()
+        }, 5000);
     });
 
     getBoodschappenlijstje();
@@ -69,7 +81,7 @@ function VleeswarenDropdown() {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data); // Hier log je de ontvangen data naar de console
+            console.log(data);
             populateDropdowns('.lijst__dropdown-vleeswaren', data);
         })
         .catch(error => console.error('Error:', error));

@@ -254,7 +254,8 @@ body {
     cursor: pointer;
 }
 
-.productInHuis__input-number {
+.productInHuis__input-number,
+.productInHuis__input-number-GET {
     width: 50px;
     background-color: transparent;
     border: none;
@@ -264,7 +265,16 @@ body {
     background-color: rgba(0, 0, 0, 0.2); /* https://www.w3schools.com/css/css_image_transparency.asp */
 }
 
-.product-dropdown {
+.productInHuis__input-number-GET:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* https://www.w3schools.com/css/css_image_transparency.asp */
+}
+
+.product-dropdown,
+.product-dropdown-1-GET,
+.product-dropdown-2-GET,
+.product-dropdown-3-GET,
+.product-dropdown-4-GET,
+.product-dropdown-5-GET {
     width: 100%;
     background-color: transparent;
     border: none;
@@ -623,9 +633,11 @@ body {
 .recept__div {
     width: 600px;
     background-color: #f1f1f1;
+    border: none;
     align-items: center;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
     border-radius: var(--border-radius);
+    min-height: 500px;
 }
 
 .hero {
@@ -731,8 +743,9 @@ body {
 }
 
 #instructions {
-    width: 100px;
-    display: block;
+    display: flex;
+    margin-left: 43%;
+    margin-top: 20px;
 }
 
 .modal {
@@ -793,4 +806,66 @@ body {
     background-color: var(--color-primary);
     border-radius: var(--border-radius);
     transition: width 5s linear;
+}
+
+.kookboek {
+    width: 700px;
+    background-color: #f6f6f6;
+    align-items: center;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    border-bottom-right-radius: 14px;
+    border-top-right-radius: 14px;
+    margin-top: 30px;
+}
+
+.kookboek-recept__div {
+    width: 600px;
+    background-color: #f1f1f1;
+    border: none;
+    align-items: center;
+    border-radius: 24px;
+    min-height: 500px;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.search-bar {
+    width: 90%;
+    padding-top: 2%;
+    padding-left: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f6f6f6;
+}
+
+.search-bar input[type="search"] {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: var(--color-primary-dark);
+}
+
+#instructions-text {
+    width: 70%;
+    height: 350px;
+    margin-left: 15%;
+    border: none;
+    background-color: var(--color-rainbow-green);
 }

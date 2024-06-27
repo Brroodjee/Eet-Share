@@ -42,7 +42,7 @@ public class ProductenInHuis {
         for (ProductQuantity pq : producten) {
             if (pq.getProduct().equals(product)) {
                 pq.setQuantity(pq.getQuantity() + quantity);
-                pq.setLocation(location); // Update location if product already exists
+                pq.setLocation(location);
                 return;
             }
         }
