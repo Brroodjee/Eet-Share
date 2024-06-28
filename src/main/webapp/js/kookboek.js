@@ -45,18 +45,11 @@ function showSuggestions(query) {
 }
 
 function searchRecipe() {
-    const progressBarHuishouden = document.querySelector(".progressBar");
 
     const query = document.getElementById("search").value;
     const result = recipes.find(recipe => recipe.receptNaam.toLowerCase() === query.toLowerCase());
     if (result) {
         fillForm(result);
-
-        console.log("sluit na 5 sec")
-        progressBarHuishouden.style.width = "100%";
-        setTimeout(() => {
-            location.reload()
-        }, 5000);
     } else {
         alert("No recipes found.");
     }

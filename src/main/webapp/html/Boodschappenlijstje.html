@@ -13,7 +13,7 @@
       <a href="productenInHuis.html">Producten in huis</a>
       <a href="#">Boodschappenlijst</a>
       <a href="Huishouden.html">Huishouden</a>
-      <a href="">Kookboek</a>
+      <a href="kookboek.html">Kookboek</a>
       <br />
       <br />
       <a href="Favorietenlijstje.html">Favorietenlijstje</a>
@@ -32,27 +32,6 @@
             <th>confirm</th>
             <th>remove</th>
           </tr>
-          <tr>
-            <td>
-              <input
-                type="number"
-                class="lijst__input-number"
-                placeholder="1"
-              />
-            </td>
-            <td>
-              <select class="lijst__dropdown-vleeswaren" name="product">
-                <!--https://www.w3schools.com/tags/tag_select.asp-->
-                <option>Selecteer product</option>
-              </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox" /></td>
-            <td>
-              <button type="button" name="remove" class="removeButton">
-                x
-              </button>
-            </td>
-          </tr>
         </table>
       </div>
       <div class="zuivel">
@@ -64,27 +43,6 @@
             <th>product</th>
             <th>check</th>
             <th>remove</th>
-          </tr>
-          <tr>
-            <td>
-              <input
-                type="number"
-                class="lijst__input-number"
-                placeholder="1"
-              />
-            </td>
-            <td>
-              <select class="lijst__dropdown-zuivel" name="product">
-                <!--https://www.w3schools.com/tags/tag_select.asp-->
-                <option>Selecteer product</option>
-              </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox" /></td>
-            <td>
-              <button type="button" name="remove" class="removeButton">
-                x
-              </button>
-            </td>
           </tr>
         </table>
       </div>
@@ -98,27 +56,6 @@
             <th>check</th>
             <th>remove</th>
           </tr>
-          <tr>
-            <td>
-              <input
-                type="number"
-                class="lijst__input-number"
-                placeholder="1"
-              />
-            </td>
-            <td>
-              <select class="lijst__dropdown-groente_en_fruit" name="product">
-                <!--https://www.w3schools.com/tags/tag_select.asp-->
-                <option>Selecteer product</option>
-              </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox" /></td>
-            <td>
-              <button type="button" name="remove" class="removeButton">
-                x
-              </button>
-            </td>
-          </tr>
         </table>
       </div>
       <div class="dranken">
@@ -130,27 +67,6 @@
             <th>product</th>
             <th>check</th>
             <th>remove</th>
-          </tr>
-          <tr>
-            <td>
-              <input
-                type="number"
-                class="lijst__input-number"
-                placeholder="1"
-              />
-            </td>
-            <td>
-              <select class="lijst__dropdown-drank" name="product">
-                <!--https://www.w3schools.com/tags/tag_select.asp-->
-                <option>Selecteer product</option>
-              </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox" /></td>
-            <td>
-              <button type="button" name="remove" class="removeButton">
-                x
-              </button>
-            </td>
           </tr>
         </table>
       </div>
@@ -164,27 +80,6 @@
             <th>check</th>
             <th>remove</th>
           </tr>
-          <tr>
-            <td>
-              <input
-                type="number"
-                class="lijst__input-number"
-                placeholder="1"
-              />
-            </td>
-            <td>
-              <select class="lijst__dropdown-koek_en_snoep" name="product">
-                <!--https://www.w3schools.com/tags/tag_select.asp-->
-                <option>Selecteer product</option>
-              </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox" /></td>
-            <td>
-              <button type="button" name="remove" class="removeButton">
-                x
-              </button>
-            </td>
-          </tr>
         </table>
       </div>
       <div class="overige">
@@ -197,27 +92,6 @@
             <th>check</th>
             <th>remove</th>
           </tr>
-          <tr>
-            <td>
-              <input
-                type="number"
-                class="lijst__input-number"
-                placeholder="1"
-              />
-            </td>
-            <td>
-              <select class="lijst__dropdown-overige" name="product">
-                <!--https://www.w3schools.com/tags/tag_select.asp-->
-                <option>Selecteer product</option>
-              </select>
-            </td>
-            <td><input type="checkbox" class="lijst__checkbox" /></td>
-            <td>
-              <button type="button" name="remove" class="removeButton">
-                x
-              </button>
-            </td>
-          </tr>
         </table>
       </div>
       <q class="responseMessage"></q>
@@ -229,7 +103,7 @@
     <template class="lijst__table-template-vleeswaren">
       <tr>
         <td>
-          <input type="number" class="lijst__input-number" placeholder="1" />
+          <input type="number" class="lijst__input-number" placeholder="0" />
         </td>
         <td>
           <select class="lijst__dropdown-vleeswaren" name="product">
@@ -246,7 +120,7 @@
     <template class="lijst__table-template-zuivel">
       <tr>
         <td>
-          <input type="number" class="lijst__input-number" placeholder="1" />
+          <input type="number" class="lijst__input-number" placeholder="0" />
         </td>
         <td>
           <select class="lijst__dropdown-zuivel" name="product">
@@ -263,7 +137,7 @@
     <template class="lijst__table-template-groente">
       <tr>
         <td>
-          <input type="number" class="lijst__input-number" placeholder="1" />
+          <input type="number" class="lijst__input-number" placeholder="0" />
         </td>
         <td>
           <select class="lijst__dropdown-groente_en_fruit" name="product">
@@ -280,7 +154,7 @@
     <template class="lijst__table-template-dranken">
       <tr>
         <td>
-          <input type="number" class="lijst__input-number" placeholder="1" />
+          <input type="number" class="lijst__input-number" placeholder="0" />
         </td>
         <td>
           <select class="lijst__dropdown-drank" name="product">
@@ -297,7 +171,7 @@
     <template class="lijst__table-template-koek">
       <tr>
         <td>
-          <input type="number" class="lijst__input-number" placeholder="1" />
+          <input type="number" class="lijst__input-number" placeholder="0" />
         </td>
         <td>
           <select class="lijst__dropdown-koek_en_snoep" name="product">
@@ -314,7 +188,7 @@
     <template class="lijst__table-template-overige">
       <tr>
         <td>
-          <input type="number" class="lijst__input-number" placeholder="1" />
+          <input type="number" class="lijst__input-number" placeholder="0" />
         </td>
         <td>
           <select class="lijst__dropdown-overige" name="product">
@@ -331,11 +205,7 @@
     <template class="lijst__table-template-vleeswaren-GET">
       <tr>
         <td>
-          <input
-            type="number"
-            class="lijst__input-number-GET"
-            placeholder="1"
-          />
+          <input type="number" class="lijst__input-number-GET" placeholder="0"/>
         </td>
         <td>
           <select class="lijst__dropdown-vleeswaren-GET" name="product">
@@ -352,11 +222,7 @@
     <template class="lijst__table-template-zuivel-GET">
       <tr>
         <td>
-          <input
-            type="number"
-            class="lijst__input-number-GET"
-            placeholder="1"
-          />
+          <input type="number" class="lijst__input-number-GET" placeholder="0"/>
         </td>
         <td>
           <select class="lijst__dropdown-zuivel-GET" name="product">
@@ -373,11 +239,7 @@
     <template class="lijst__table-template-groente-GET">
       <tr>
         <td>
-          <input
-            type="number"
-            class="lijst__input-number-GET"
-            placeholder="1"
-          />
+          <input type="number" class="lijst__input-number-GET" placeholder="0"/>
         </td>
         <td>
           <select class="lijst__dropdown-groente_en_fruit-GET" name="product">
@@ -394,11 +256,7 @@
     <template class="lijst__table-template-dranken-GET">
       <tr>
         <td>
-          <input
-            type="number"
-            class="lijst__input-number-GET"
-            placeholder="1"
-          />
+          <input type="number" class="lijst__input-number-GET" placeholder="0"/>
         </td>
         <td>
           <select class="lijst__dropdown-drank-GET" name="product">
@@ -415,11 +273,7 @@
     <template class="lijst__table-template-koek-GET">
       <tr>
         <td>
-          <input
-            type="number"
-            class="lijst__input-number-GET"
-            placeholder="1"
-          />
+          <input type="number" class="lijst__input-number-GET" placeholder="0"/>
         </td>
         <td>
           <select class="lijst__dropdown-koek_en_snoep-GET" name="product">
@@ -436,11 +290,7 @@
     <template class="lijst__table-template-overige-GET">
       <tr>
         <td>
-          <input
-            type="number"
-            class="lijst__input-number-GET"
-            placeholder="1"
-          />
+          <input type="number" class="lijst__input-number-GET" placeholder="0"/>
         </td>
         <td>
           <select class="lijst__dropdown-overige-GET" name="product">
