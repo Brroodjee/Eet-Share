@@ -18,29 +18,6 @@ public class FavorietenlijstjeResource {
 
     List<Favorietenlijstje> favorietenlijstjes = Favorietenlijstje.getFavorietenlijstjes();
 
-    @GET
-    @Path("/alleFavorieten")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAlleFavorietenlijstjes() {
-
-        if (favorietenlijstjes != null && !favorietenlijstjes.isEmpty()) {
-            return Response.status(Response.Status.OK).entity(favorietenlijstjes).build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Geen favorietenlijstjes gevonden").build();
-        }
-    }
-
-    private Product findProductByName(String productNaam) {
-        List<Product> producten = Product.getProducten();
-        for (Product product : producten) {
-            if (product.getProductNaam().equalsIgnoreCase(productNaam)) {
-                return product;
-            }
-        }
-        return null;
-    }
-
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -51,9 +28,9 @@ public class FavorietenlijstjeResource {
         System.out.println(jsonBody);
 
         String username = securityContext.getUserPrincipal().getName();
-        User user = UserUtils.getUserByUsername(username);
+        User user = User.getUserByUsername(username);
 
-        if (user != null && UserUtils.isValidUser(user)) {
+        if (user != null && User.isValidUser(user)) {
             System.out.println(user);
             Favorietenlijstje userFavorietenlijstje = null;
 
@@ -75,7 +52,7 @@ public class FavorietenlijstjeResource {
             String productNaam = jsonObject.getString("productNaam");
             System.out.println(productNaam);
 
-            Product product = findProductByName(productNaam);
+            Product product = Product.findProductByName(productNaam);
             if (product == null) {
                 return Response.status(Response.Status.NOT_FOUND)
                         .entity("Product not found: " + productNaam).build();
@@ -93,10 +70,10 @@ public class FavorietenlijstjeResource {
     public String getFavorietenlijstje(@Context SecurityContext securityContext) {
         String username = securityContext.getUserPrincipal().getName();
         System.out.println(username);
-        User user = UserUtils.getUserByUsername(username);
+        User user = User.getUserByUsername(username);
         System.out.println(user);
 
-        if (user != null && UserUtils.isValidUser(user)) {
+        if (user != null && User.isValidUser(user)) {
             Favorietenlijstje favorietenlijstje = null;
             for (Favorietenlijstje lijstje : Favorietenlijstje.getFavorietenlijstjes()) {
                 if (lijstje.getUserFavorietenlijstje().getUsername().equals(user.getUsername())) {

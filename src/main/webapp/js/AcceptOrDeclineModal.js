@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function DropdownInvites() {
-    fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden/invites", {
+    fetch("/eet-share/huishouden/invites", {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function acceptInvite(selectedInvite) {
-    fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden/accept", {
+    fetch("/eet-share/huishouden/accept", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -114,7 +114,7 @@ function acceptInvite(selectedInvite) {
 }
 
 function declineInvite(selectedInvite) {
-    fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden/decline", {
+    fetch("/eet-share/huishouden/decline", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

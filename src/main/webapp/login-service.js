@@ -5,7 +5,7 @@ export default class LoginService {
 
     login(user, password) {
         const jsonRequestBody = { username: user, password: password };
-        return fetch("https://tests-1718633149689.azurewebsites.net/eet-share/login", {
+        return fetch("/eet-share/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -35,7 +35,7 @@ export default class LoginService {
             return Promise.reject("No token found");
         }
 
-        return fetch("https://tests-1718633149689.azurewebsites.net/eet-share/users", {
+        return fetch("http://localhost:4711/eet-share/users", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`

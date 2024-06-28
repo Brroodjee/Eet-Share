@@ -80,4 +80,24 @@ public class User implements Principal, Serializable {
         }
     }
 
+    public static User getUserByUsername(String username) {
+        List<User> users = User.getUsers();
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public static boolean isValidUser(User user) {
+        List<User> users = User.getUsers();
+        for (User storedUser : users) {
+            if (storedUser.getUsername().equals(user.getUsername()) && storedUser.getPassword().equals(user.getPassword())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

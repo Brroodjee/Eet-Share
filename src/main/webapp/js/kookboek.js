@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function fetchRecipes() {
-    fetch('https://tests-1718633149689.azurewebsites.net/eet-share/kookboek', {
+    fetch('/eet-share/kookboek', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

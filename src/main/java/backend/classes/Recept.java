@@ -1,7 +1,6 @@
 package backend.classes;
 
 import java.io.Serializable;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 

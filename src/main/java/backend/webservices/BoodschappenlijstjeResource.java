@@ -14,15 +14,6 @@ public class BoodschappenlijstjeResource extends Application {
 
     List<Boodschappenlijstje> boodschappenlijstjes = Boodschappenlijstje.getBoodschappenlijstjes();
 
-    private Boodschappenlijstje findBoodschappenlijstjeByHuishouden(Huishouden huishouden) {
-        for (Boodschappenlijstje lijstje : Boodschappenlijstje.getBoodschappenlijstjes()) {
-            if (lijstje.getHuishouden().equals(huishouden)) {
-                return lijstje;
-            }
-        }
-        return null;
-    }
-
     @POST
     @Path("/testing")
     @Produces(MediaType.APPLICATION_JSON)
@@ -34,14 +25,14 @@ public class BoodschappenlijstjeResource extends Application {
         System.out.println(jsonBody);
 
         String username = securityContext.getUserPrincipal().getName();
-        User user = UserUtils.getUserByUsername(username);
+        User user = User.getUserByUsername(username);
 
-        if (user != null && UserUtils.isValidUser(user)) {
+        if (user != null && User.isValidUser(user)) {
             System.out.println(user);
 
-            Huishouden huishouden = findHuishoudenByUser(user);
+            Huishouden huishouden = Huishouden.findHuishoudenByUser(user);
             if (huishouden != null) {
-                Boodschappenlijstje boodschappenlijstje = findBoodschappenlijstjeByHuishouden(huishouden);
+                Boodschappenlijstje boodschappenlijstje = Boodschappenlijstje.findBoodschappenlijstjeByHuishouden(huishouden);
 
                 if (boodschappenlijstje == null) {
                     boodschappenlijstje = new Boodschappenlijstje(huishouden);
@@ -51,7 +42,7 @@ public class BoodschappenlijstjeResource extends Application {
                 int quantity = jsonObject.getInt("quantity");
                 int location = jsonObject.getInt("location");
 
-                Product product = findProductByName(productNaam);
+                Product product = Product.findProductByName(productNaam);
                 if (product != null) {
                     boodschappenlijstje.addProduct(product, quantity, location);
                     return Response.ok(boodschappenlijstje.toJson()).build();
@@ -64,51 +55,17 @@ public class BoodschappenlijstjeResource extends Application {
         return Response.status(Response.Status.UNAUTHORIZED).build();
     }
 
-
-    @GET
-    @Path("/alleBoodschappenlijstjes")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAlleBoodschappenlijstjes() {
-
-        if (boodschappenlijstjes != null && !boodschappenlijstjes.isEmpty()) {
-            return Response.status(Response.Status.OK).entity(boodschappenlijstjes).build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Geen favorietenlijstjes gevonden").build();
-        }
-    }
-
-
-    private Huishouden findHuishoudenByUser(User user) {
-        for (Huishouden huishouden : Huishouden.getHuishoudens()) {
-            if (huishouden.getHoofd().equals(user) || huishouden.getLeden().contains(user)) {
-                return huishouden;
-            }
-        }
-        return null;
-    }
-
-    public Product findProductByName(String productNaam) {
-        List<Product> producten = Product.getProducten();
-        for (Product product : producten) {
-            if (product.getProductNaam().equalsIgnoreCase(productNaam)) {
-                return product;
-            }
-        }
-        return null;
-    }
-
     @GET
     @Path("/ophalen")
     @Produces(MediaType.APPLICATION_JSON)
     public String getBoodschappenlijstje(@Context SecurityContext securityContext) {
         String username = securityContext.getUserPrincipal().getName();
-        User user = UserUtils.getUserByUsername(username);
+        User user = User.getUserByUsername(username);
 
-        if (user != null && UserUtils.isValidUser(user)) {
-            Huishouden huishouden = findHuishoudenByUser(user);
+        if (user != null && User.isValidUser(user)) {
+            Huishouden huishouden = Huishouden.findHuishoudenByUser(user);
             if (huishouden != null) {
-                Boodschappenlijstje boodschappenlijstje = findBoodschappenlijstjeByHuishouden(huishouden);
+                Boodschappenlijstje boodschappenlijstje = Boodschappenlijstje.findBoodschappenlijstjeByHuishouden(huishouden);
 
                 if (boodschappenlijstje == null) {
                     throw new NotFoundException("Boodschappenlijstje niet gevonden voor huishouden");
@@ -117,7 +74,7 @@ public class BoodschappenlijstjeResource extends Application {
                 JsonArrayBuilder productArrayBuilder = Json.createArrayBuilder();
                 for (ProductQuantity productQuantity : boodschappenlijstje.getProducten()) {
                     JsonObjectBuilder productBuilder = Json.createObjectBuilder();
-                    productBuilder.add("product", productQuantity.getProduct().toJson()); // Voeg hele product toe
+                    productBuilder.add("product", productQuantity.getProduct().toJson());
                     productBuilder.add("quantity", productQuantity.getQuantity());
                     productArrayBuilder.add(productBuilder);
                 }

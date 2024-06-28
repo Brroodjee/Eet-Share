@@ -44,6 +44,16 @@ public class Hoofd extends User {
         Hoofd.hoofden = hoofden;
     }
 
+    public static Hoofd getHoofdByUsername(String username) {
+        List<Hoofd> hoofden = Hoofd.getHoofden();
+        for (Hoofd hoofd : hoofden) {
+            if (hoofd.getUsername().equals(username)) {
+                return hoofd;
+            }
+        }
+        return null;
+    }
+
     public JsonObject toJson() {
         JsonObjectBuilder hoofdBuilder = Json.createObjectBuilder();
         hoofdBuilder.add("hoofdID", this.hoofdID);

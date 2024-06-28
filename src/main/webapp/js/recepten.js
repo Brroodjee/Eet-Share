@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const receptForm = document.querySelector("#recept-form");
 
     receptForm.addEventListener("submit", function(event) {
+        const progressBarHuishouden = document.querySelector(".progressBar");
+
         event.preventDefault();
 
         const dishName = document.querySelector("#dish-name").value;
@@ -16,17 +18,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (submitButton === "submitbutton") {
             createRecept(dishName, servings, cookingTime, prepTime, instructions);
-            console.log(dishName)
-            console.log(servings)
-            console.log(cookingTime)
-            console.log(prepTime)
-            console.log(instructions)
+
+            console.log("sluit na 5 sec")
+            progressBarHuishouden.style.width = "100%";
+            setTimeout(() => {
+                location.reload()
+            }, 5000);
         }
     })
 })
 
 function createRecept(dishName, servings, cookingTime, prepTime, instructions) {
-    fetch("https://tests-1718633149689.azurewebsites.net/eet-share/recepten/testing", {
+    fetch("/eet-share/recepten/testing", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

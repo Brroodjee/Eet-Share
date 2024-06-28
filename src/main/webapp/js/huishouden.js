@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function GetHuishoudenNaamEnLeden() {
     console.log("Huishouden gegevens ophalen");
-    fetch('https://tests-1718633149689.azurewebsites.net/eet-share/huishouden', {
+    fetch('/eet-share/huishouden', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function createHousehold(huishoudenNaam) {
-    fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden/aanmaken", {
+    fetch("/eet-share/huishouden/aanmaken", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -1,7 +1,5 @@
 package backend.classes;
 
-import org.glassfish.hk2.api.DuplicateServiceException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,5 +98,15 @@ public class Gebruiker extends User {
                 }
             }
         }
+    }
+
+    public static Gebruiker getGebruikerByUsername(String username) {
+        List<Gebruiker> gebruikers = Gebruiker.getGebruikers();
+        for (Gebruiker gebruiker : gebruikers) {
+            if (gebruiker.getUsername().equals(username)) {
+                return gebruiker;
+            }
+        }
+        return null;
     }
 }

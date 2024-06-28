@@ -36,15 +36,15 @@ public class ReceptenResource extends Application {
         System.out.println(jsonBody);
 
         String username = securityContext.getUserPrincipal().getName();
-        User user = UserUtils.getUserByUsername(username);
+        User user = User.getUserByUsername(username);
 
-        if (user != null && UserUtils.isValidUser(user)) {
+        if (user != null && User.isValidUser(user)) {
             System.out.println(user);
 
-            Huishouden huishouden = findHuishoudenByUser(user);
+            Huishouden huishouden = Huishouden.findHuishoudenByUser(user);
             if (huishouden != null) {
                 System.out.println("daar");
-                Kookboek kookboek = findKookboekByHuishouden(huishouden);
+                Kookboek kookboek = Kookboek.findKookboekByHuishouden(huishouden);
                 System.out.println("hier");
                 if (kookboek != null) {
                     System.out.println("hiero");
@@ -78,51 +78,5 @@ public class ReceptenResource extends Application {
             return Response.status(Response.Status.NOT_FOUND).entity("Household not found").build();
         }
         return Response.status(Response.Status.UNAUTHORIZED).build();
-    }
-
-
-    @GET
-    @Path("/alleRecepten")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllRecepten() {
-
-        if (recepten != null && !recepten.isEmpty()) {
-            return Response.status(Response.Status.OK).entity(recepten).build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Geen recepten gevonden").build();
-        }
-    }
-
-    @GET
-    @Path("/alleKookboeken")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllKookboeken() {
-
-        if (kookboeken != null && !kookboeken.isEmpty()) {
-            return Response.status(Response.Status.OK).entity(kookboeken).build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Geen recepten gevonden").build();
-        }
-    }
-
-    private Huishouden findHuishoudenByUser(User user) {
-        for (Huishouden huishouden : Huishouden.getHuishoudens()) {
-            if (huishouden.getHoofd().equals(user) || huishouden.getLeden().contains(user)) {
-                return huishouden;
-            }
-        }
-        return null;
-    }
-
-    private Kookboek findKookboekByHuishouden(Huishouden huishouden) {
-
-        for (Kookboek kookboek : kookboeken) {
-            if (kookboek.getHuishouden().equals(huishouden)) {
-                return kookboek;
-            }
-        }
-        return null;
     }
 }

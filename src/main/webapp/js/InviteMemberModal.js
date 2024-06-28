@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function DropdownGebruikers() {
     console.log("DropdownGebruikers() function called");
 
-    fetch("https://tests-1718633149689.azurewebsites.net/eet-share/users/gebruikers", {
+    fetch("/eet-share/users/gebruikers", {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function inviteUser(selectedUser) {
-    fetch("https://tests-1718633149689.azurewebsites.net/eet-share/huishouden/invite", {
+    fetch("/eet-share/huishouden/invite", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

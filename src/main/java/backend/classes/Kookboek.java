@@ -35,4 +35,14 @@ public class Kookboek implements Serializable {
     public static void setKookboeken(List<Kookboek> kookboeken) {
         Kookboek.kookboeken = kookboeken;
     }
+
+    public static Kookboek findKookboekByHuishouden(Huishouden huishouden) {
+
+        for (Kookboek kookboek : kookboeken) {
+            if (kookboek.getHuishouden().equals(huishouden)) {
+                return kookboek;
+            }
+        }
+        return null;
+    }
 }

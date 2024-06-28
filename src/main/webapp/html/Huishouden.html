@@ -1,89 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Huishouden</title>
-    <link rel="stylesheet" href="../css/style.css"/>
-</head>
-<body class="huishouden__body">
-<div id="huishouden__menu">
-    <h1>Menu</h1>
-    <a href="homepage.html">Homepage</a>
-    <a href="Boodschappenlijstje.html">Boodschappenlijst</a>
-    <a href="Huishouden.html">Huishouden</a>
-    <a href="">Kookboek</a>
-    <br>
-    <br>
-    <a href="#" id="inviteMember">Uitnodigen nieuw familielid</a>
-    <a href="#" id="acceptInvite">Accepteren/weigeren uitnodiging</a>
-</div>
-<div class="huishouden__div">
-    <h1>Huishouden</h1>
-    <h1 id="huishouden__h1-naam">U neemt nog geen deel aan een huishouden</h1>
-    <button id="myBtn">Huishouden aanmaken</button>
-    <div id="myModal" class="modal">
-
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" href="../pngs/logo.ico" />
+  </head>
+  <body class="huishouden__body">
+    <div id="huishouden__menu">
+      <h1>Menu</h1>
+      <a href="homepage.html">Homepage</a>
+      <a href="productenInHuis.html" id="producten-link-menu"
+        >Producten in huis</a
+      >
+      <a href="Boodschappenlijstje.html" id="boodschappen-link-menu"
+        >Boodschappenlijst</a
+      >
+      <a href="#">Huishouden</a>
+      <a href="kookboek.html" id="kookboek-link-menu">Kookboek</a>
+      <br />
+      <br />
+      <a href="#" id="inviteMember">Uitnodigen nieuw familielid</a>
+      <a href="#" id="acceptInvite">Accepteren/weigeren uitnodiging</a>
+    </div>
+    <div class="huishouden__div">
+      <h1>Huishouden</h1>
+      <h1 id="huishouden__h1-naam">U neemt nog geen deel aan een huishouden</h1>
+      <button id="myBtn">Huishouden aanmaken</button>
+      <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close" id="span1">&times;</span>
-            <p>Maak een huishouden aan</p>
-            <form id="huishouden__form-create">
-                <input type="text" placeholder="Huishouden naam" id="huishouden__modal-naam"/>
-                <button type="submit" id="huishouden__modal-button">Create</button>
-            </form>
-            <q class="responseMessage"></q>
-            <div class="progressContainer">
-                <div class="progressBar">></div>
-            </div>
+          <span class="close" id="span1">&times;</span>
+          <p>Maak een huishouden aan</p>
+          <form id="huishouden__form-create">
+            <input
+              type="text"
+              placeholder="Huishouden naam"
+              id="huishouden__modal-naam"
+            />
+            <button type="submit" id="huishouden__modal-button">Create</button>
+          </form>
+          <q class="responseMessage"></q>
+          <div class="progressContainer">
+            <div class="progressBar">></div>
+          </div>
         </div>
         <script src="../js/createHouseholdModal.js"></script>
-    </div>
-    <div id="inviteModal" class="modal">
+      </div>
+      <div id="inviteModal" class="modal">
         <div class="modal-content">
-            <span class="close" id="span2">&times;</span>
-            <p>Uitnodigen nieuw familielid</p>
-            <form id="invite__form-create">
-                <select id="invite__dropdown">
-                </select>
-                <button type="submit" id="invite__modal-button">Invite</button>
-            </form>
-            <q class="responseMessage"></q>
-            <div class="progressContainer">
-                <div class="progressBar"></div>
-            </div>
+          <span class="close" id="span2">&times;</span>
+          <p>Uitnodigen nieuw familielid</p>
+          <form id="invite__form-create">
+            <select id="invite__dropdown"></select>
+            <button type="submit" id="invite__modal-button">Invite</button>
+          </form>
+          <q class="responseMessage"></q>
+          <div class="progressContainer">
+            <div class="progressBar"></div>
+          </div>
         </div>
         <script src="../js/InviteMemberModal.js"></script>
-    </div>
-    <div id="acceptOrDeclineModal" class="modal">
+      </div>
+      <div id="acceptOrDeclineModal" class="modal">
         <div class="modal-content">
-            <span class="close" id="span3">&times;</span>
-            <p>Accepteren/Weigeren uitnodigingen</p>
-            <form id="invite__form-accept-decline">
-                <select id="invites__dropdown">
-                </select>
-                <button type="submit" id="invite__modal-button-decline">x</button>
-                <button type="submit" id="invite__modal-button-accept">✓</button>
-            </form>
-            <q class="responseMessage"></q>
-            <div class="progressContainer">
-                <div class="progressBar"></div>
-            </div>
+          <span class="close" id="span3">&times;</span>
+          <p>Accepteren/Weigeren uitnodigingen</p>
+          <form id="invite__form-accept-decline">
+            <select id="invites__dropdown"></select>
+            <button type="submit" id="invite__modal-button-decline">x</button>
+            <button type="submit" id="invite__modal-button-accept">✓</button>
+          </form>
+          <q class="responseMessage"></q>
+          <div class="progressContainer">
+            <div class="progressBar"></div>
+          </div>
         </div>
         <script src="../js/AcceptOrDeclineModal.js"></script>
-    </div>
-    <div class="huishouden__grid">
+      </div>
+      <div class="huishouden__grid">
         <!-- hier komen de divs van de personen te staan-->
+      </div>
     </div>
-</div>
-<template>
-    <div class="grid-item">
+    <template>
+      <div class="grid-item">
         <div class="centered">
-            <img src="../pngs/Default_pfp.png" alt="defaultProfilePicture">
-            <p class="role"></p>
-            <p class="name"></p>
+          <img src="../pngs/Default_pfp.png" alt="defaultProfilePicture" />
+          <p class="role"></p>
+          <p class="name"></p>
         </div>
-    </div>
-</template>
-<script src="../js/huishouden.js"></script>
-</body>
+      </div>
+    </template>
+    <script src="../js/huishouden.js"></script>
+    <script src="../js/disabledLinks.js"></script>
+  </body>
 </html>

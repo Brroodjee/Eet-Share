@@ -73,7 +73,7 @@ function addRow(tableSelector, templateSelector, dropdownFunction) {
 
 function VleeswarenDropdown() {
     console.log("VleeswarenDropdown() function called");
-    fetch('https://tests-1718633149689.azurewebsites.net/eet-share/producten/vleeswaren', {
+    fetch('/eet-share/producten/vleeswaren', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -89,7 +89,7 @@ function VleeswarenDropdown() {
 
 function ZuivelDropdown() {
     console.log("ZuivelDropdown() function called");
-    fetch('https://tests-1718633149689.azurewebsites.net/eet-share/producten/zuivel', {
+    fetch('/eet-share/producten/zuivel', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -102,7 +102,7 @@ function ZuivelDropdown() {
 
 function GroenteDropdown() {
     console.log("GroenteDropdown() function called");
-    fetch('https://tests-1718633149689.azurewebsites.net/eet-share/producten/groente', {
+    fetch('/eet-share/producten/groente', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -115,7 +115,7 @@ function GroenteDropdown() {
 
 function DrankenDropdown() {
     console.log("DrankenDropdown() function called");
-    fetch('https://tests-1718633149689.azurewebsites.net/eet-share/producten/dranken', {
+    fetch('/eet-share/producten/dranken', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -128,7 +128,7 @@ function DrankenDropdown() {
 
 function KoekDropdown() {
     console.log("KoekDropdown() function called");
-    fetch('https://tests-1718633149689.azurewebsites.net/eet-share/producten/koek', {
+    fetch('http://localhost:4711/eet-share/producten/koek', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -141,7 +141,7 @@ function KoekDropdown() {
 
 function OverigeDropdown() {
     console.log("OverigeDropdown() function called");
-    fetch('https://tests-1718633149689.azurewebsites.net/eet-share/producten/overige', {
+    fetch('/eet-share/producten/overige', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -191,7 +191,7 @@ function postValues(values) {
     values.forEach(({ product }) => {
         const bodyData = { productNaam: product };
 
-        fetch("https://tests-1718633149689.azurewebsites.net/eet-share/favorietenlijstje", {
+        fetch("/eet-share/favorietenlijstje", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -216,7 +216,7 @@ function postValues(values) {
 
 function getFavorietenlijstje() {
     console.log("getFavorietenlijstje() called");
-    fetch('https://tests-1718633149689.azurewebsites.net/eet-share/favorietenlijstje/mijn', {
+    fetch('/eet-share/favorietenlijstje/mijn', {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
@@ -275,7 +275,6 @@ function getFavorietenlijstje() {
                 const newRow = document.importNode(template.content, true);
                 const dropdown = newRow.querySelector('select');
 
-                // Voeg de opties toe aan de dropdown
                 const option = document.createElement('option');
                 option.value = product.productNaam;
                 option.text = product.productNaam;

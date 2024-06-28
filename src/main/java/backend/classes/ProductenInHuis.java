@@ -42,11 +42,20 @@ public class ProductenInHuis {
         for (ProductQuantity pq : producten) {
             if (pq.getProduct().equals(product)) {
                 pq.setQuantity(pq.getQuantity() + quantity);
-                pq.setLocation(location);
+                pq.setLocation(location); // Update location if product already exists
                 return;
             }
         }
         producten.add(new ProductQuantity(product, quantity, location));
+    }
+
+    public static ProductenInHuis findProductenByHuishouden(Huishouden huishouden) {
+        for (ProductenInHuis lijstje : ProductenInHuis.getProductenInHuis()) {
+            if (lijstje.getHuishouden().equals(huishouden)) {
+                return lijstje;
+            }
+        }
+        return null;
     }
 
     public JsonObject toJson() {

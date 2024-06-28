@@ -57,6 +57,15 @@ public class Huishouden implements Serializable {
         Huishouden.huishoudens = huishoudens;
     }
 
+    public static Huishouden findHuishoudenByUser(User user) {
+        for (Huishouden huishouden : Huishouden.getHuishoudens()) {
+            if (huishouden.getHoofd().equals(user) || huishouden.getLeden().contains(user)) {
+                return huishouden;
+            }
+        }
+        return null;
+    }
+
     public JsonObject toJson() {
         JsonObjectBuilder huishoudenBuilder = Json.createObjectBuilder();
         huishoudenBuilder.add("huishoudenNaam", this.huishoudenNaam);

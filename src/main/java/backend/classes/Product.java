@@ -110,6 +110,16 @@ public class Product implements Serializable {
         Product.producten = producten;
     }
 
+    public static Product findProductByName(String productNaam) {
+        List<Product> producten = Product.getProducten();
+        for (Product product : producten) {
+            if (product.getProductNaam().equalsIgnoreCase(productNaam)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
     public String getCategory() {
         if (this.isVleeswaren) {
             return "vleeswaren";

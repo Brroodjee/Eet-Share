@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const jsonRequestBody = { username: username, password: password };
 
-        fetch("https://tests-1718633149689.azurewebsites.net/eet-share/register", {
+        fetch("/eet-share/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(error => {
                 console.error('Registration failed:', error);
-                document.querySelector('.form__message--error').textContent = 'Registration failed: ' + error.message;
+                document.querySelector('.form__message--error').textContent = error.message;
             });
     });
 });

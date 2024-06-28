@@ -50,6 +50,15 @@ public class Boodschappenlijstje implements Serializable {
         producten.add(new ProductQuantity(product, quantity, location));
     }
 
+    public static Boodschappenlijstje findBoodschappenlijstjeByHuishouden(Huishouden huishouden) {
+        for (Boodschappenlijstje lijstje : Boodschappenlijstje.getBoodschappenlijstjes()) {
+            if (lijstje.getHuishouden().equals(huishouden)) {
+                return lijstje;
+            }
+        }
+        return null;
+    }
+
     public JsonObject toJson() {
         JsonObjectBuilder boodschappenlijstjeBuilder = Json.createObjectBuilder();
         boodschappenlijstjeBuilder.add("huishoudenNaam", this.huishouden.getHuishoudenNaam());
