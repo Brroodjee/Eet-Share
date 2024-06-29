@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (submitButton === "submitbutton") {
             createRecept(dishName, servings, cookingTime, prepTime, instructions);
 
-            console.log("sluit na 5 sec")
+            console.log("sluit na 2 sec")
             progressBarHuishouden.style.width = "100%";
             setTimeout(() => {
                 location.reload()
-            }, 5000);
+            }, 2000);
         }
     })
 })

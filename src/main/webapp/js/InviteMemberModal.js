@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             progressBarInvite.style.width = "100%";
             setTimeout(() => {
                 location.reload()
-            }, 5000);
+            }, 2000);
         }
     })
 });

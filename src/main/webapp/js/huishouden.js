@@ -84,14 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (submitterButton === "huishouden__modal-button") {
 
             createHousehold(huishoudenNaam);
-            console.log("sluit na 5 sec")
+            console.log("sluit na 2 sec")
             responseMessageHuishouden.innerText = "huishouden " + huishoudenNaam + " aangemaakt!";
             responseMessageHuishouden.style.color = "green" //https://www.w3schools.com/jsref/prop_style_color.asp
             progressBarHuishouden.style.width = "100%";
             setTimeout(() => {
                 huishoudenNaamModal.style.display = "none";
                 location.reload()
-            }, 5000);
+            }, 2000);
         }
     })
 })

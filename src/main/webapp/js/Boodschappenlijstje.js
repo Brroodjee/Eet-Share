@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(values);
         postValues(values);
 
-        console.log("sluit na 5 sec")
+        console.log("sluit na 2 sec")
         responseMessageHuishouden.innerText = "Boodschappenlijst opgeslagen!";
         responseMessageHuishouden.style.color = "green" //https://www.w3schools.com/jsref/prop_style_color.asp
         progressBarHuishouden.style.width = "100%";
         setTimeout(() => {
             location.reload()
-        }, 5000);
+        }, 2000);
     });
 
     getBoodschappenlijstje();

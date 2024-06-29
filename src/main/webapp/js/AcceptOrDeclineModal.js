@@ -59,29 +59,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (submitButton === "invite__modal-button-accept") {
             acceptInvite(selectedInvite);
-            console.log("sluit na 5 sec")
+            console.log("sluit na 2 sec")
             responseMessage.innerText = "Uitnodiging van " + selectedInvite + " geaccepteerd, venster sluit na 5 seconden";
             responseMessage.style.color = "green" //https://www.w3schools.com/jsref/prop_style_color.asp
             progressBar.style.width = "100%";
             setTimeout(() => {
                 acceptOrDeclineModal.style.display = "none";
                 location.reload()
-            }, 5000);
+            }, 2000);
         } else if (submitButton === "invite__modal-button-decline") {
             declineInvite(selectedInvite);
-            console.log("sluit na 5 sec")
+            console.log("sluit na 2 sec")
             responseMessage.innerText = "Uitnodiging van " + selectedInvite + " geweigerd, venster sluit na 5 seconden";
             responseMessage.style.color = "red"
             progressBar.style.width = "100%";
             if (dropdownGebruikers.length > 1) {
                 setTimeout(() => {
                     location.reload();
-                }, 5000);
+                }, 2000);
             } else if (dropdownGebruikers.length === 1) {
                 setTimeout(() => {
                     acceptOrDeclineModal.style.display = "none";
                     location.reload();
-                }, 5000);
+                }, 2000);
             }
 
         }
