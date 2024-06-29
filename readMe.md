@@ -14,6 +14,7 @@ In eet-share zijn verschillende functies waar users gebruik van kunnen maken.
 
 ## Stapsgewijs door het systeem heen lopen
 ### 1. Account aanmaken
+[Account aanmaken](https://tests-1718633149689.azurewebsites.net/)
 Maak hier uw account aan met een unieke username en een wachtwoord.
 ![Account aanmaken](assets/create_account.png)
 
